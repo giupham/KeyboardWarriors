@@ -1,12 +1,13 @@
 #pragma once
+#include "../Test/Test.hpp"
 #include <string>
-
+using namespace std;
 class Session
 {
 public:
   Session();
   ~Session();
-  StartSessions();
+  void StartSessions();
 
 private:
   std::string date;

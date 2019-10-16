@@ -1,5 +1,7 @@
 #pragma
 #include <string>
+#include "../Test/Progress.hpp"
+using namespace std;
 
 class User
 {

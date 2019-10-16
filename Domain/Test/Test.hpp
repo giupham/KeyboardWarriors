@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+using namespace std;
 class Test
 {
 public:
@@ -12,4 +12,4 @@ private:
   std::string content;
   std::string id;
   std::string title;
-}
+};

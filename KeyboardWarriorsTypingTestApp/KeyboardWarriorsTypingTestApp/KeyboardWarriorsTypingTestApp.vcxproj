@@ -99,13 +99,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,16 +152,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
+    <ClInclude Include="..\..\Domain\Sessions\Session.hpp" />
+    <ClInclude Include="..\..\Domain\Test\Progress.hpp" />
+    <ClInclude Include="..\..\Domain\Test\Result.hpp" />
+    <ClInclude Include="..\..\Domain\Test\Test.hpp" />
+    <ClInclude Include="..\..\Domain\User\User.hpp" />
+    <ClInclude Include="..\..\TechServices\Payment\Payment.hpp" />
+    <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp" />
+    <ClInclude Include="..\..\UI\console.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Domain\Sessions\Session.cpp" />
+    <ClCompile Include="..\..\Domain\Test\Progress.cpp" />
+    <ClCompile Include="..\..\Domain\Test\Result.cpp" />
+    <ClCompile Include="..\..\Domain\Test\Test.cpp" />
+    <ClCompile Include="..\..\Domain\User\User.cpp" />
+    <ClCompile Include="..\..\TechServices\Payment\Payment.cpp" />
+    <ClCompile Include="..\..\TechServices\Payment\Subscription.cpp" />
+    <ClCompile Include="..\..\UI\console.cpp" />
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp" />
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

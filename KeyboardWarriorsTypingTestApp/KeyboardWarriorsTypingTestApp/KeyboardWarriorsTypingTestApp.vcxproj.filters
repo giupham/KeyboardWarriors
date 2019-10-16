@@ -13,18 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{a3f4ce3d-8170-4aef-a5ce-e794411d0430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Domain">
+      <UniqueIdentifier>{f0735a7c-505f-4d2f-9bc6-4f30dabd91af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Domain\Test">
+      <UniqueIdentifier>{5d4b0100-100e-49fd-bca5-ead1ff461bc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Domain\User">
+      <UniqueIdentifier>{ea7db4b7-d590-4207-b487-5e8e869621d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Domain\Session">
+      <UniqueIdentifier>{496a0bb0-faa0-4c06-ade6-92ab20943a71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Technical">
+      <UniqueIdentifier>{56a0fe62-b42b-47ae-bd4e-0cb312adba4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\UI\console.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Domain\Test\Test.hpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Domain\Test\Result.hpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Domain\Test\Progress.hpp">
+      <Filter>Header Files\Domain\User</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Domain\User\User.hpp">
+      <Filter>Header Files\Domain\User</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Domain\Sessions\Session.hpp">
+      <Filter>Header Files\Domain\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TechServices\Payment\Payment.hpp">
+      <Filter>Header Files\Technical</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UI\console.cpp">
+      <Filter>Header Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\Test\Test.cpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\Test\Result.cpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\Test\Progress.cpp">
+      <Filter>Header Files\Domain\User</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\User\User.cpp">
+      <Filter>Header Files\Domain\User</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\Sessions\Session.cpp">
+      <Filter>Header Files\Domain\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TechServices\Payment\Subscription.cpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TechServices\Payment\Payment.cpp">
+      <Filter>Header Files\Technical</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
