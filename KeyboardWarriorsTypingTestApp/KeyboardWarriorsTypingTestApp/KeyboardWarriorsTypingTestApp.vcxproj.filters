@@ -57,6 +57,9 @@
     <ClInclude Include="..\..\TechServices\Payment\Payment.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
+    <ClInclude Include="Difficulty.hpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">

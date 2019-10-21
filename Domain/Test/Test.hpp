@@ -1,15 +1,19 @@
 #pragma once
 #include <string>
+#include "Difficulty.hpp"
 using namespace std;
+
 class Test
 {
+private:
+	Difficulty::Level difficulty;
+	std::string content;
+	std::string id;
+	std::string title;
 public:
   Test();
   ~Test();
-  Test getTest(string);
-private:
-  std::string difficulty;
-  std::string content;
-  std::string id;
-  std::string title;
+  std::string getContent();
+
+
 };

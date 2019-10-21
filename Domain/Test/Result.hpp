@@ -1,17 +1,18 @@
 #pragma once
 #include "../Sessions/Session.hpp"
 #include <string>
+#include <vector>
 using namespace std;
 
 class Result
 {
-public:
-	Result();
-	~Result();
-	Result getResult(string);
 private:
 	int WPM;
 	std::string id;
-	Session parentSession;
+	std::string sessionID;
+public:
+	Result();
+	~Result();
+	vector<string> viewResults();
 
 };

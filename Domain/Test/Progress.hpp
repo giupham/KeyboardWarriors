@@ -6,9 +6,12 @@
 using namespace std;
 class Progress
 {
-public:
-  Progress();
-  ~Progress();
-private:
-	map<string,Result> Results;
+	private:
+		map<string, Result> Results;
+	public:
+	  Progress();
+	  ~Progress();
+	  Result locateResult(string);
+	  double getAverageWPM();
+
 };
