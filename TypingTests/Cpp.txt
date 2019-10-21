@@ -1,0 +1,176 @@
+﻿#include "FX.h"
+
+
+#define IBN 5100
+#define PALETTE_SOLID_WRAP (paletteBlend == 1 || paletteBlend == 3)
+
+
+
+
+/*
+ * No blinking. Just plain old static light.
+ */
+uint16_t WS2812FX::mode_static(void) {
+  fill(SEGCOLOR(0));
+  return (SEGMENT.getOption(7)) ? FRAMETIME : 500; //update faster if in transition
+}
+
+
+
+
+/*
+ * Blink/strobe function
+ * Alternate between color1 and color2
+ * if(strobe == true) then create a strobe effect
+ * NOTE: Maybe re-rework without timer
+ */
+uint16_t WS2812FX::blink(uint32_t color1, uint32_t color2, bool strobe, bool do_palette) {
+  uint16_t stateTime = SEGENV.aux1;
+  uint32_t cycleTime = (255 - SEGMENT.speed)*20;
+  uint32_t onTime = 0;
+  uint32_t offTime = cycleTime;
+
+
+  if (!strobe) {
+    onTime = (cycleTime * SEGMENT.intensity) >> 8;
+    offTime = cycleTime - onTime;
+  }
+  
+  stateTime = ((SEGENV.aux0 & 1) == 0) ? onTime : offTime;
+  stateTime += 20;
+    
+  if (now - SEGENV.step > stateTime)
+  {
+    SEGENV.aux0++;
+    SEGENV.aux1 = stateTime;
+    SEGENV.step = now;
+  }
+
+
+  uint32_t color = ((SEGENV.aux0 & 1) == 0) ? color1 : color2;
+  if (color == color1 && do_palette)
+  {
+    for(uint16_t i=SEGMENT.start; i < SEGMENT.stop; i++) {
+      setPixelColor(i, color_from_palette(i, true, PALETTE_SOLID_WRAP, 0));
+    }
+  } else fill(color);
+
+
+  return FRAMETIME;
+}
+
+
+
+
+/*
+ * Normal blinking. 50% on/off time.
+ */
+uint16_t WS2812FX::mode_blink(void) {
+  return blink(SEGCOLOR(0), SEGCOLOR(1), false, true);
+}
+
+
+
+
+/*
+ * Classic Blink effect. Cycling through the rainbow.
+ */
+uint16_t WS2812FX::mode_blink_rainbow(void) {
+  return blink(color_wheel(SEGENV.call & 0xFF), SEGCOLOR(1), false, false);
+}
+
+
+
+
+/*
+ * Classic Strobe effect.
+ */
+uint16_t WS2812FX::mode_strobe(void) {
+  return blink(SEGCOLOR(0), SEGCOLOR(1), true, true);
+}
+
+
+
+
+/*
+ * Classic Strobe effect. Cycling through the rainbow.
+ */
+uint16_t WS2812FX::mode_strobe_rainbow(void) {
+  return blink(color_wheel(SEGENV.call & 0xFF), SEGCOLOR(1), true, false);
+}
+
+
+
+
+/*
+ * Color wipe function
+ * LEDs are turned on (color1) in sequence, then turned off (color2) in sequence.
+ * if (bool rev == true) then LEDs are turned off in reverse order
+ */
+uint16_t WS2812FX::color_wipe(bool rev, bool useRandomColors) {
+  uint32_t cycleTime = 1000 + (255 - SEGMENT.speed)*200;
+  uint32_t perc = now % cycleTime;
+  uint16_t prog = (perc * 65535) / cycleTime;
+  bool back = (prog > 32767);
+  if (back) {
+    prog -= 32767;
+    if (SEGENV.step == 0) SEGENV.step = 1;
+  } else {
+    if (SEGENV.step == 2) SEGENV.step = 3; //trigger color change
+  }
+
+
+  if (useRandomColors) {
+    if (SEGENV.call == 0) {
+      SEGENV.aux0 = random8();
+      SEGENV.step = 3;
+    }
+    if (SEGENV.step == 1) { //if flag set, change to new random color
+      SEGENV.aux1 = get_random_wheel_index(SEGENV.aux0);
+      SEGENV.step = 2;
+    }
+    if (SEGENV.step == 3) {
+      SEGENV.aux0 = get_random_wheel_index(SEGENV.aux1);
+      SEGENV.step = 0;
+    }
+  }
+  
+  uint16_t ledIndex = (prog * SEGLEN) >> 15;
+  uint16_t rem = 0;
+  rem = (prog * SEGLEN) * 2; //mod 0xFFFF
+  rem /= (SEGMENT.intensity +1);
+  if (rem > 255) rem = 255;
+
+
+  uint32_t col1 = useRandomColors? color_wheel(SEGENV.aux1) : SEGCOLOR(1);
+  for (uint16_t i = SEGMENT.start; i < SEGMENT.stop; i++)
+  {
+    uint16_t index = (rev && back)? SEGMENT.stop -1 -i : i;
+    uint32_t col0 = useRandomColors? color_wheel(SEGENV.aux0) : color_from_palette(index, true, PALETTE_SOLID_WRAP, 0);
+    
+    if (i - SEGMENT.start < ledIndex) 
+    {
+      setPixelColor(index, back? col1 : col0);
+    } else
+    {
+      setPixelColor(index, back? col0 : col1);
+      if (i - SEGMENT.start == ledIndex) setPixelColor(index, color_blend(back? col0 : col1, back? col1 : col0, rem));
+    }
+  } 
+  return FRAMETIME;
+}
+
+
+
+
+/*
+ * Lights all LEDs one after another.
+ */
+uint16_t WS2812FX::mode_color_wipe(void) {
+  return color_wipe(false, false);
+}
+
+
+
+
+https://github.com/Aircoookie/WLED/blob/master/wled00/FX.cpp

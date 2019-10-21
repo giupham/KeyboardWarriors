@@ -7,10 +7,13 @@ Test::Test()
 
 Test::Test(Difficulty::Level d)
 {
+    //set difficulty level
     difficulty = d;
+    //get test name
     content = getContent();
+    //get the title of the test
     title = content.substr(0, content.find('.'));
-
+    //id = ??
 }
 
 Test::~Test()
