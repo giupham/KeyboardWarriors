@@ -15,6 +15,13 @@ class User
 	public:
 	  User();
 	  ~User();
+	  bool getMembership();
+	  void setMembership(bool);
+	  std::string getUsername();
+	  void setUsername(std::string);
+	  void encryptPassword(std::string);
+
+
 	  vector<string> getOptions();
 	  Progress viewProgress();
 	  void changePassword(string newPassword);
