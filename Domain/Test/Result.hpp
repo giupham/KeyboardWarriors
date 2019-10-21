@@ -12,6 +12,7 @@ private:
 	std::string sessionID;
 public:
 	Result();
+	Result(int, int, std::string, std::string);
 	~Result();
 	vector<string> viewResults();
 

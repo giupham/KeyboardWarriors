@@ -12,8 +12,7 @@ private:
 	std::string title;
 public:
   Test();
+  Test(Difficulty::Level);
   ~Test();
   std::string getContent();
-
-
 };

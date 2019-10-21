@@ -3,6 +3,9 @@
 #include "../Test/Result.hpp"
 #include "../Test/Difficulty.hpp"
 #include <string>
+#include <ctime>
+#include <chrono>
+
 using namespace std;
 class Session
 {

@@ -11,5 +11,4 @@ public:
 	~ConsoleView();
 	void displayOptions(vector<string>);
 	std::string getInput();
-
 };
