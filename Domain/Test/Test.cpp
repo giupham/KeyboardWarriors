@@ -1,8 +1,12 @@
 #include "Test.hpp"
+#include <iostream>
+#include <fstream>
 
 Test::Test()
 {
-
+	Difficulty::Level difficulty;
+	char* content;
+	char* title;
 }
 
 Test::Test(Difficulty::Level d)
@@ -12,7 +16,7 @@ Test::Test(Difficulty::Level d)
     //get test name
     content = getContent();
     //get the title of the test
-    title = content.substr(0, content.find('.'));
+    //title = content;
     //id = ??
 }
 
@@ -27,26 +31,26 @@ std::string Test::getContent()
     switch(difficulty)
     {
         case Difficulty::Level::MEDIUM:
-            return "The Yellow Wallpaper.txt";
+            title = "TheYellowWallpaper.txt";
             break;
         case Difficulty::Level::HARD:
-            return "ayn_rand.txt";
+			title = "TheBlueLight.txt";
             break;
         case Difficulty::Level::PYTHON:
-            return "Py.txt";
+			title = "Py.txt";
             break;
         case Difficulty::Level::CSS:
-            return "CSS.txt";
+			title = "CSS.txt";
             break;
 		case Difficulty::Level::CPLUSPLUS:
-            return "Cpp.txt";
+			title = "Cpp.txt";
             break;
 		case Difficulty::Level::TYPESCRIPT:
-            return "TS.txt";
+			title = "TS.txt";
             break;
         //EASY
         default:
-            return "Alice.txt";
+			title = "Anthem.txt";
             break;
     }
 }
