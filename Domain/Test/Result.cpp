@@ -10,8 +10,7 @@ Result::Result()
 
 Result::Result(int words, int sec, string identification, string session_id)
 {
-    float mins = sec / 60;
-    WPM = words/mins;
+    WPM = float((words/sec)*(60/1)); 
     id = identification;
     sessionID = session_id;
 }
