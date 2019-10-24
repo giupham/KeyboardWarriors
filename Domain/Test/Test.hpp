@@ -6,13 +6,9 @@ using namespace std;
 class Test
 {
 private:
-	Difficulty::Level difficulty;
-	std::string content;
-	std::string id;
-	std::string title;
+	bool testEnded;
 public:
   Test();
-  Test(Difficulty::Level);
   ~Test();
-  std::string getContent();
+  void beginTest(string input);
 };

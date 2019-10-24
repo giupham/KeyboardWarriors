@@ -23,5 +23,8 @@ Result::~Result()
 
 vector<string> Result::viewResults()
 {
-    
+	vector<string> test;
+	test.push_back("test");
+	test.push_back("test2");
+	return test;
 }

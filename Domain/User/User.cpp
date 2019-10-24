@@ -14,5 +14,10 @@ std::string User::getUsername() {
 vector<string> User::getOptions() {
 	vector<string> options;
 	options.push_back("View Personal Progress");
+	return options;
+}
+
+void User::requestTypingTest()
+{
 
 }

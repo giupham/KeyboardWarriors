@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <fstream>
+#include <iostream>
 #include "Result.hpp"
 using namespace std;
 class Progress

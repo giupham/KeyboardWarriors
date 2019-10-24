@@ -2,10 +2,12 @@
 //
 
 #include <iostream>
+#include "../../Domain/Sessions/TypingSession.cpp"
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	TypingSession newSession = TypingSession();
+	newSession.selectTest();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

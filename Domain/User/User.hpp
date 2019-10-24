@@ -26,6 +26,5 @@ class User
 	  Progress viewProgress();
 	  void changePassword(string newPassword);
 	  void makePayment();
-	  Session requestTypingTest();
-
+	  void requestTypingTest();
 };

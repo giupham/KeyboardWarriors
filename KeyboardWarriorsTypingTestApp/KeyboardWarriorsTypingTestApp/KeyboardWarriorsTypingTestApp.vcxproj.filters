@@ -48,9 +48,6 @@
     <ClInclude Include="..\..\Domain\User\User.hpp">
       <Filter>Header Files\Domain\User</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Domain\Sessions\Session.hpp">
-      <Filter>Header Files\Domain\Session</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
@@ -59,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="Difficulty.hpp">
       <Filter>Header Files\Domain\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Domain\Sessions\TypingSession.hpp">
+      <Filter>Header Files\Domain\Session</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,14 +80,14 @@
     <ClCompile Include="..\..\Domain\User\User.cpp">
       <Filter>Header Files\Domain\User</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Domain\Sessions\Session.cpp">
-      <Filter>Header Files\Domain\Session</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\TechServices\Payment\Subscription.cpp">
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
     <ClCompile Include="..\..\TechServices\Payment\Payment.cpp">
       <Filter>Header Files\Technical</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\Sessions\TypingSession.cpp">
+      <Filter>Header Files\Domain\Session</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

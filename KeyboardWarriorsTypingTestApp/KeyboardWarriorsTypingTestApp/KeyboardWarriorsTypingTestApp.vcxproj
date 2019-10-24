@@ -152,7 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Domain\Sessions\Session.hpp" />
+    <ClInclude Include="..\..\Domain\Sessions\TypingSession.hpp" />
     <ClInclude Include="..\..\Domain\Test\Progress.hpp" />
     <ClInclude Include="..\..\Domain\Test\Result.hpp" />
     <ClInclude Include="..\..\Domain\Test\Test.hpp" />
@@ -163,7 +163,7 @@
     <ClInclude Include="Difficulty.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Domain\Sessions\Session.cpp" />
+    <ClCompile Include="..\..\Domain\Sessions\TypingSession.cpp" />
     <ClCompile Include="..\..\Domain\Test\Progress.cpp" />
     <ClCompile Include="..\..\Domain\Test\Result.cpp" />
     <ClCompile Include="..\..\Domain\Test\Test.cpp" />

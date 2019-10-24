@@ -1,5 +1,4 @@
 #pragma once
-#include "../Sessions/Session.hpp"
 #include <string>
 #include <vector>
 using namespace std;
@@ -7,12 +6,12 @@ using namespace std;
 class Result
 {
 private:
-	int WPM;
-	std::string id;
-	std::string sessionID;
+	float WPM;
+	string id;
+	string sessionID;
 public:
 	Result();
-	Result(int, int, std::string, std::string);
+	Result(int, int, string, string);
 	~Result();
 	vector<string> viewResults();
 
