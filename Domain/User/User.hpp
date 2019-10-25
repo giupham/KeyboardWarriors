@@ -1,6 +1,8 @@
 #pragma
 #include <string>
 #include <vector>
+#include <fstream>
+#include <iostream>
 #include "../Test/Progress.hpp"
 using namespace std;
 
@@ -10,9 +12,10 @@ class User
 		std::string username;
 		std::string password;
 		bool membership;
-		Progress history;
 
 	public:
+	  Progress history;
+
 	  User();
 	  //previous user
 	  User(string, string);
@@ -20,13 +23,17 @@ class User
 	  bool getMembership();
 	  void setMembership(bool);
 	  string getUsername();
-	  void setUsername(std::string);
-	  void encryptPassword(std::string);
+	  void setUsername(string);
+	  void setPassword(string);
+	  //void encryptPassword(std::string);
 	  void readProfile();
+	  void newProfile(string username, string password);
+	  void profileWrite();
 
 	  vector<string> getOptions();
 	  void viewProgress();
 	  void changePassword(string newPassword);
 	  bool makePayment();
+	  bool requestTypingTest();
 
 };
