@@ -25,11 +25,11 @@ public:
 	TypingSession();
 	TypingSession(string);
 	~TypingSession();
-	void StartSession();
+	void StartSession(string selectedTest);
 	Result getTestResults();
 	//string getTimeStr();
-	void selectTest();
-
+	string selectTest(string input);
+	void beginTest();
 };
 
 #endif

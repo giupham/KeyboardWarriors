@@ -20,9 +20,28 @@ TypingSession::~TypingSession()
 
 }
 
-void TypingSession::StartSession()
+void TypingSession::StartSession(string input) {
+	TypingTest.title = selectTest(input);
+}
+
+string TypingSession::selectTest(string input)
 {
-	selectTest();
+	string title = "";
+	if (input == "1")
+		title = "Alice1.txt";
+	else if (input == "2")
+		title = "Alice2.txt";
+	else if (input == "3")
+		title = "Alice3.txt";
+	else if (input == "4")
+		title = "Py.txt";
+	else if (input == "5")
+		title = "CSS.txt";
+	else if (input == "6")
+		title = "CPP.txt";
+	else
+		title = "Alice1.txt";
+	return title;
 }
 
 Result TypingSession::getTestResults()
@@ -31,12 +50,8 @@ Result TypingSession::getTestResults()
 	return test;
 }
 
-void TypingSession::selectTest()
-{
-	string input;
-	cout << "Please select difficulty level: \n 1) EASY \n 2) MEDIUM \n 3) HARD \n 4) PYTHON \n 5) CSS \n 6) CPP \n 7) TYPESCRIPT \n";
-	cin >> input;
-	TypingTest.beginTest(input);
+void TypingSession::beginTest() {
+	TypingTest.beginTest(TypingTest.title);
 }
 
 ////get time and date

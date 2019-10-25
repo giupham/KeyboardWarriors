@@ -111,7 +111,6 @@ bool User::makePayment()
 TypingSession User::requestTypingTest()
 {
 	TypingSession ts = TypingSession(username);
-	ts.selectTest();
 	return ts;
 }
 

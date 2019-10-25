@@ -11,6 +11,7 @@ class Test
 	public:
 	  Test();
 	  ~Test();
+	  string title;
 	  void beginTest(string input);
 	  int calculateWPM(string filename, double duration, string inputContent);
 	  int getTestWordCount(string filename);

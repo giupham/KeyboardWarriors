@@ -16,6 +16,7 @@ Test::Test()
 {
 	WPM = 0;
 	path = "";
+	title = "";
 }
 
 Test::~Test()
@@ -23,60 +24,36 @@ Test::~Test()
 }
 
 // WHICH TEST TO IMPLEMENT 
-void Test::beginTest(string input)
+void Test::beginTest(string selectedTest)
 {
-	string title;
 	clock_t start;
 	double duration = 0;
-	if (input == "1") 
-		title = "Alice1.txt";
-    else if (input == "2") 
-		title = "Alice2.txt";
-	else if (input == "3") 
-		title = "Alice3.txt";
-	else if (input == "4") 
-		title = "Py.txt";
-	else if (input == "5") 
-		title = "CSS.txt";
-	else if (input == "6") 
-		title = "CPP.txt";
-	else
-		title = "Alice1.txt";
 
 	string inputContent;
 	string line;
 	string lineNext;
-	ifstream myfile("../../TypingTests/" + title);
+	path = "../../TypingTests/" + selectedTest;
+	ifstream myfile(path);
 	string currInput;
-	string _pressToStart;
 	if (myfile.is_open()) {
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
-		cout << "This is a line by line typing test." << endl;
-		cout << "Please press 'Enter' at the end of each line to move to the next line.\n" << endl;
-		cout << "Please press 'Enter' to start the clock." << endl;
-		cin.ignore();
-		if (cin.get() == '\n') {
-			system("CLS");
-			start = clock();
-			if (getline(myfile, line)) {
-				while (getline(myfile, lineNext)) {
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-					cout << line << '\n';
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-					cout << lineNext << '\n';
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-					getline(cin, currInput);
-					system("CLS");
-					inputContent += currInput + '\n';
-					line = lineNext;
-				}
+		start = clock();
+		if (getline(myfile, line)) {
+			while (getline(myfile, lineNext)) {
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				cout << line << '\n';
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+				cout << lineNext << '\n';
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				getline(cin, currInput);
+				system("CLS");
 				inputContent += currInput + '\n';
+				line = lineNext;
 			}
-			duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
+			cout << line << '\n';
+			getline(cin, currInput);
+			inputContent += currInput + '\n';
 		}
-		path = "../../TypingTests/" + title;
+		duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
 		WPM = calculateWPM(path, duration, inputContent);
 		cout << "WPM: " << WPM << endl;
 	}

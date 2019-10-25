@@ -2,13 +2,15 @@
 
 #include <vector>
 #include <string>
+#include "../Domain/Sessions/TypingSession.hpp"
 using namespace std;
 class ConsoleView
 {
 private:
+	TypingSession sess;
 public:
 	ConsoleView();
 	~ConsoleView();
-	void displayOptions(vector<string>);
-	std::string getInput();
+	void displayOptions();
+	void displayTestStart();
 };
