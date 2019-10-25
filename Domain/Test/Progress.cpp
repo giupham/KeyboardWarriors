@@ -6,11 +6,13 @@ Progress::Progress()
 	number_of_sessions = 0;
 	username = "";
 	profile_path = "";
+	total_WPM = 0;
 }
 
 Progress::Progress(string _id)
 {
 	WPM = 0;
+	total_WPM = 0;
 	number_of_sessions = 0;
 	username = _id;
 	profile_path = "../../KeyboardWarriorsTypingTestApp/User_Profiles/" + username + ".txt";
@@ -111,6 +113,46 @@ void Progress::updateResults(string session_ID, Result res)
 	Results[session_ID] = res;
 	total_WPM += res.getWPM();
 	WPM = total_WPM / number_of_sessions;
+	try {
+		updateUserProfile(session_ID);
+	}
+	catch (exception& ex)
+	{
+		cerr << ex.what() << endl;
+	}
+}
+
+
+void Progress::updateUserProfile(string session_ID)
+{
+	ifstream input_file(profile_path);
+	if (!input_file.is_open())
+		throw invalid_argument("Unable to locate Profile\n");
+	string input;
+	vector<string> lines;
+	while (getline(input_file, input))
+		lines.push_back(input);
+
+	for (auto& line : lines)
+	{
+
+		size_t found = line.find("WPM");
+		if (found != string::npos)
+		{
+			line = "WPM\\\\" + to_string(WPM);
+		}
+	}
+	input_file.close();
+	//ADDING NEW RESULT INTO PROFILE
+	string new_session = session_ID + "\\\\" + to_string(Results[session_ID].getWPM());
+	lines.push_back(new_session);
+	cout << new_session << endl;
+
+	//PUTTING CHANGES BACK INTO THE PROFILE TXT
+	ofstream output_file(profile_path);
+	for (auto const& line : lines)
+		output_file << line << endl;
+	output_file.close();
 }
 
 void Progress::print_results()
