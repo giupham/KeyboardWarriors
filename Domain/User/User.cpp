@@ -107,13 +107,6 @@ bool User::makePayment()
 	return true;
 }
 
-//wait til sessions is done
-TypingSession User::requestTypingTest()
-{
-	TypingSession ts = TypingSession(username);
-	return ts;
-}
-
 void User::viewProgress()
 {
 	try {

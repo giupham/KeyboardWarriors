@@ -25,13 +25,10 @@ class User
 	  void setUsername(std::string);
 	  void encryptPassword(std::string);
 	  void readProfile();
-	  
-
 
 	  vector<string> getOptions();
 	  void viewProgress();
 	  void changePassword(string newPassword);
 	  bool makePayment();
-	  TypingSession requestTypingTest();
 
 };

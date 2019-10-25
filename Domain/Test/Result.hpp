@@ -8,12 +8,12 @@ using namespace std;
 class Result
 {
 private:
-	float WPM;
+	int WPM;
 public:
 	Result();
 	Result(float WPM);
 	Result(int words, int secs);
 	~Result();
-	float getWPM();
-
+	int getWPM();
+	bool putWPM(int testWPM);
 };

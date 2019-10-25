@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Difficulty.hpp"
+#include "Result.hpp"
 using namespace std;
 
 class Test
@@ -8,11 +8,12 @@ class Test
 	private:
 		double WPM;
 		string path;
+		Result testResult;
 	public:
 	  Test();
 	  ~Test();
 	  string title;
 	  void beginTest(string input);
-	  int calculateWPM(string filename, double duration, string inputContent);
+	  Result calculateWPM(string filename, double duration, string inputContent);
 	  int getTestWordCount(string filename);
 };

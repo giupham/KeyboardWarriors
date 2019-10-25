@@ -16,6 +16,7 @@ Test::Test()
 {
 	WPM = 0;
 	path = "";
+	testResult = Result();
 	title = "";
 }
 
@@ -34,6 +35,7 @@ void Test::beginTest(string selectedTest)
 	string lineNext;
 	path = "../../TypingTests/" + selectedTest;
 	ifstream myfile(path);
+	getTestWordCount(path);
 	string currInput;
 	if (myfile.is_open()) {
 		start = clock();
@@ -54,13 +56,13 @@ void Test::beginTest(string selectedTest)
 			inputContent += currInput + '\n';
 		}
 		duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
-		WPM = calculateWPM(path, duration, inputContent);
+		testResult = calculateWPM(path, duration, inputContent);
 		cout << "WPM: " << WPM << endl;
 	}
 	myfile.close();
 }
 
-int Test::calculateWPM(string path, double duration, string inputContent) {
+Result Test::calculateWPM(string path, double duration, string inputContent) {
 	int wordsCorrect = 0;
 	int wordsTotal = 1;
 	int count = 0;
@@ -82,7 +84,7 @@ int Test::calculateWPM(string path, double duration, string inputContent) {
 		}
 	}
 
-	return wordsCorrect / wordsTotal;
+	testResult.putWPM(wordsCorrect/wordsTotal);
 }
 
 int Test::getTestWordCount(string path) {
@@ -93,11 +95,13 @@ int Test::getTestWordCount(string path) {
 	if (myfile.is_open()) {
 		while (!myfile.eof()) {
 			myfile >> word;
+			cout << word << endl;
 			count++;
 		}
 		//cout << "Number of words in file are " << count << endl;
 	}
 	myfile.close();
+	cin >> word;
 	return count;
 }
 
