@@ -5,11 +5,13 @@ using namespace std;
 
 class Test
 {
-private:
-	double WPM;
-public:
-  Test();
-  ~Test();
-  void beginTest(string input);
-  double calculateWPM(string filename, double duration);
+	private:
+		double WPM;
+		string path;
+	public:
+	  Test();
+	  ~Test();
+	  void beginTest(string input);
+	  int calculateWPM(string filename, double duration, string inputContent);
+	  int getTestWordCount(string filename);
 };
