@@ -8,6 +8,7 @@
 //#include <ctime>
 //#include <chrono>
 //#include <fstream>
+#include "../User/User.hpp"
 #include <iostream>
 
 using namespace std;
@@ -19,12 +20,11 @@ private:
 	string SessionID;
 	Test TypingTest;
 	double TimeTaken;
-	string username;
 
 public:
 	TypingSession();
-	TypingSession(string);
 	~TypingSession();
+	User SessionUser;
 	void StartSession(string selectedTest);
 	Result getTestResults();
 	//string getTimeStr();

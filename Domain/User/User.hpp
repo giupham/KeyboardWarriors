@@ -2,12 +2,10 @@
 #include <string>
 #include <vector>
 #include "../Test/Progress.hpp"
-#include "../Sessions/TypingSession.hpp"
 using namespace std;
 
 class User
 {
-	
 	private:
 		std::string username;
 		std::string password;

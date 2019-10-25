@@ -28,3 +28,14 @@ void ConsoleView::displayTestStart() {
 		sess.beginTest();
 	}
 }
+
+void ConsoleView::displayLoginOptions() {
+	string input;
+	cout << "Welcome. Are you an existing user or new user?" << endl;
+	cout << "1) Existing User" << endl;
+	cout << "2) New User" << endl;
+	cin >> input;
+	if (input == "2") {
+		//sess.SessionUser.newProfile
+	}
+}

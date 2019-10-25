@@ -13,4 +13,5 @@ public:
 	~ConsoleView();
 	void displayOptions();
 	void displayTestStart();
+	void displayLoginOptions();
 };

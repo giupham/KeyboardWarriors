@@ -1,12 +1,5 @@
 #include "Test.hpp"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <filesystem>
-#include <cstdio>
-#include <ctime>
-#include <list>
-#include <Windows.h>
+#include <sstream>
 
 using namespace std;
 
@@ -69,22 +62,25 @@ Result Test::calculateWPM(string path, double duration, string inputContent) {
 	int seeker = 0;
 	count = getTestWordCount(path);
 	//compare inputContent to file content
-	string currInputContentLine = "";
+	string inputContentLine = "";
 	string currFileLine = "";
 
 	ifstream myfile(path);
 	if (myfile.is_open()) {
 		while (getline(myfile, currFileLine)) {
-			currInputContentLine = inputContent.substr(seeker, currInputContentLine.find('\n'));
-			/*compare the inputLine to the fileContentLine
-			if (currFileLine.compare(currInputContentLine)*/
-
+			inputContentLine = inputContent.substr(seeker, inputContentLine.find('\n'));
+			//compare the inputLine to the fileContentLine
+			if (currFileLine.compare(inputContentLine)) {
+				//detect missed space by detecting inputContentLine.length() < fileContentLine.length()
+				istringstream sstream = istringstream();
+			}
 			//move seeker to position for next line
-			seeker = currInputContentLine.length();
+			seeker = inputContentLine.length();
 		}
 	}
 
 	testResult.putWPM(wordsCorrect/wordsTotal);
+	return testResult;
 }
 
 int Test::getTestWordCount(string path) {

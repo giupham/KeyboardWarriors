@@ -2,19 +2,12 @@
 
 TypingSession::TypingSession()
 {
-	username = "";
+	SessionUser = User();
 	date = "";
 	SessionID = "";
 	TypingTest = Test();
 }
 
-TypingSession::TypingSession(string _username)
-{
-	username = _username;
-	TypingTest = Test();
-	date = "";
-	SessionID = "";
-}
 TypingSession::~TypingSession()
 {
 

@@ -9,6 +9,7 @@ int main()
 	ConsoleView view = ConsoleView();
 	view.displayOptions();
 	view.displayTestStart();
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
