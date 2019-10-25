@@ -16,7 +16,7 @@ class TypingSession
 {
 private:
 	string date;
-	string SesssionID;
+	string SessionID;
 	Test TypingTest;
 	double TimeTaken;
 

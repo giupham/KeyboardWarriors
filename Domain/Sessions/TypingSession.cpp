@@ -3,9 +3,8 @@
 TypingSession::TypingSession()
 {
 	date = "";
-	SesssionID = "";
+	SessionID = "";
 	TypingTest = Test();
-	TimeTaken = 0;
 }
 
 TypingSession::~TypingSession()

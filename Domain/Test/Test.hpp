@@ -6,9 +6,10 @@ using namespace std;
 class Test
 {
 private:
-	bool testEnded;
+	double WPM;
 public:
   Test();
   ~Test();
   void beginTest(string input);
+  double calculateWPM(string filename, double duration);
 };

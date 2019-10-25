@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "../../Domain/Sessions/TypingSession.cpp"
+#include "../../Domain/Sessions/TypingSession.hpp"
 
 int main()
 {
