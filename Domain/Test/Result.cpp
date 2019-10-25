@@ -4,15 +4,16 @@
 Result::Result()
 {
     WPM = 0; 
-    id = "";
-    sessionID = "";
 }
 
-Result::Result(int words, int sec, string identification, string session_id)
+Result::Result(float _WPM)
+{
+	WPM = _WPM;
+}
+
+Result::Result(int words, int sec)
 {
     WPM = float((words/sec)*(60/1)); 
-    id = identification;
-    sessionID = session_id;
 }
 
 Result::~Result()
@@ -20,11 +21,9 @@ Result::~Result()
 
 }
 
-
-vector<string> Result::viewResults()
+float Result::getWPM()
 {
-	vector<string> test;
-	test.push_back("test");
-	test.push_back("test2");
-	return test;
+	return WPM;
 }
+
+

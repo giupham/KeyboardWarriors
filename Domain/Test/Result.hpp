@@ -1,18 +1,19 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 using namespace std;
 
 class Result
 {
 private:
 	float WPM;
-	string id;
-	string sessionID;
 public:
 	Result();
-	Result(int, int, string, string);
+	Result(float WPM);
+	Result(int words, int secs);
 	~Result();
-	vector<string> viewResults();
+	float getWPM();
 
 };

@@ -10,12 +10,18 @@ class Progress
 {
 	private:
 		map<string, Result> Results;
-		string id;
+		string username;
+		string profile_path;
+		float WPM;
+		int number_of_sessions;
+		float total_WPM;
 	public:
 	  Progress();
 	  Progress(string);
+	  bool read_profile();
 	  ~Progress();
-	  Result locateResult(std::string);
-	  double getAverageWPM();
-
+	  Result locateResult(string);
+	  float getAverageWPM();
+	  void updateResults(string, Result);
+	  void print_results();
 };
