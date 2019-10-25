@@ -19,9 +19,11 @@ private:
 	string SessionID;
 	Test TypingTest;
 	double TimeTaken;
+	string username;
 
 public:
 	TypingSession();
+	TypingSession(string);
 	~TypingSession();
 	void StartSession();
 	Result getTestResults();
