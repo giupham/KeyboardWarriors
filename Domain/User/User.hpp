@@ -2,10 +2,12 @@
 #include <string>
 #include <vector>
 #include "../Test/Progress.hpp"
+#include "../Sessions/TypingSession.hpp"
 using namespace std;
 
 class User
 {
+	
 	private:
 		std::string username;
 		std::string password;
@@ -14,17 +16,22 @@ class User
 
 	public:
 	  User();
+	  //previous user
+	  User(string, string);
 	  ~User();
 	  bool getMembership();
 	  void setMembership(bool);
-	  std::string getUsername();
+	  string getUsername();
 	  void setUsername(std::string);
 	  void encryptPassword(std::string);
+	  void readProfile();
+	  
 
 
 	  vector<string> getOptions();
-	  Progress viewProgress();
+	  void viewProgress();
 	  void changePassword(string newPassword);
-	  void makePayment();
-	  void requestTypingTest();
+	  bool makePayment();
+	  TypingSession requestTypingTest();
+
 };
