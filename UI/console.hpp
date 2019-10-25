@@ -2,13 +2,17 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
+#include <Windows.h>
+
 using namespace std;
 class ConsoleView
 {
-private:
-public:
-	ConsoleView();
-	~ConsoleView();
-	void displayOptions(vector<string>);
-	std::string getInput();
+	public:
+		ConsoleView();
+		~ConsoleView();
+		string displayOptions();
+		void displayTestRules(string selected);
+	private:
+		string selection;
 };

@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include "../../Domain/Sessions/TypingSession.hpp"
+#include "../../UI/console.hpp"
 
 int main()
 {
-	TypingSession newSession = TypingSession();
-	newSession.selectTest();
+	ConsoleView view = ConsoleView();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

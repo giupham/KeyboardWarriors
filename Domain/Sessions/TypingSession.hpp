@@ -23,10 +23,9 @@ private:
 public:
 	TypingSession();
 	~TypingSession();
-	void StartSession();
+	void StartSession(string selectedTest);
 	Result getTestResults();
 	//string getTimeStr();
-	void selectTest();
 
 };
 

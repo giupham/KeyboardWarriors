@@ -12,23 +12,15 @@ TypingSession::~TypingSession()
 
 }
 
-void TypingSession::StartSession()
+void TypingSession::StartSession(string selectedTest)
 {
-	selectTest();
+	TypingTest.beginTest(selectedTest);
 }
 
 Result TypingSession::getTestResults()
 {
 	Result test = Result();
 	return test;
-}
-
-void TypingSession::selectTest()
-{
-	string input;
-	cout << "Please select difficulty level: \n 1) EASY \n 2) MEDIUM \n 3) HARD \n 4) PYTHON \n 5) CSS \n 6) CPP \n 7) TYPESCRIPT \n";
-	cin >> input;
-	TypingTest.beginTest(input);
 }
 
 ////get time and date
