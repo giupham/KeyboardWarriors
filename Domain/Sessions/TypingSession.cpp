@@ -40,17 +40,16 @@ string TypingSession::selectTest(string input)
 
 Result TypingSession::getTestResults()
 {
-	Result test = Result();
-	return test;
-	updateProgress(SessionUser.history);
+	return TypingTest.testResult;
 }
 
 void TypingSession::beginTest() {
 	TypingTest.beginTest(TypingTest.title);
+	updateProgress(SessionUser.history, TypingTest.testResult);
 }
 
-void TypingSession::updateProgress(Progress &newProgress) {
-
+void TypingSession::updateProgress(Progress &newProgress, Result res) {
+	newProgress.updateResults(to_string(newProgress.get_sess_num() + 1), res);
 }
 
 ////get time and date

@@ -1,6 +1,5 @@
 #include "console.hpp"
-#include <iostream>
-#include <Windows.h>
+
 
 ConsoleView::ConsoleView() {
 	sess = TypingSession();
@@ -15,9 +14,11 @@ void ConsoleView::captureUserLoginInfo(string& un, string& pw) {
 	cin >> un;
 	cout << "Password: ";
 	cin >> pw;
+	system("CLS");
 }
 
 void ConsoleView::displayOptions() {
+	system("CLS");
 	string input;
 	cout << "Please select difficulty level: \n 1) EASY \n 2) MEDIUM \n 3) HARD \n 4) PYTHON \n 5) CSS \n 6) CPP \n 7) TYPESCRIPT \n";
 	cin >> input;
@@ -42,6 +43,7 @@ void ConsoleView::displayLoginOptions() {
 	cout << "1) Existing User" << endl;
 	cout << "2) New User" << endl;
 	cin >> input;
+	system("CLS");
 
 	bool success = false;
 	if (input == "1") {
@@ -84,3 +86,21 @@ void ConsoleView::authenticateUser() {
 	}
 }
 
+void ConsoleView::displayChoices()
+{
+	bool exit_system = false;
+	do {
+		vector<string> options = sess.SessionUser.getOptions();
+		char input;
+		for (const auto& line : options)
+			cout << line << endl;
+		cin >> input;
+		system("CLS");
+		if (input == '1')
+			displayOptions();
+		else if (input == '2')
+			sess.SessionUser.viewProgress();
+		else if (input == '3')
+			exit_system = true;
+	} while (!exit_system);
+}

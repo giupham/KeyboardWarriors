@@ -125,7 +125,9 @@ void Progress::updateResults(string session_ID, Result res)
 
 void Progress::updateUserProfile(string session_ID)
 {
+
 	ifstream input_file(profile_path);
+	cout << profile_path << endl;
 	if (!input_file.is_open())
 		throw invalid_argument("Unable to locate Profile\n");
 	string input;
@@ -167,5 +169,10 @@ void Progress::print_results()
 		it++;
 	}
 	cout << endl;
+}
+
+int Progress::get_sess_num()
+{
+	return number_of_sessions;
 }
 

@@ -27,6 +27,7 @@ User::User(string _username, string _password)
 		throw ex;
 	}
 	membership = false;
+	history = Progress(username);
 }
 void User::readProfile()
 {
@@ -152,15 +153,23 @@ void User::viewProgress()
 
  vector<string> User::getOptions() {
  	vector<string> options;
-	options.push_back("1) Request Typing Test\n");
- 	options.push_back("2) View Personal Progress\n");
+	options.push_back("1) Request Typing Test");
+ 	options.push_back("2) View Personal Progress");
+	options.push_back("3) Quit");
 	return options;
  }
 
  void User::newProfile(string _username, string _password)
  {
 	 string profile_path = "../../KeyboardWarriorsTypingTestApp/User_Profiles/" + _username + ".txt";
-	 ofstream file(profile_path);
+	 //CHECK IF PROFILE ALREADY EXISTS
+	 if (ifstream(profile_path))
+		 throw invalid_argument("Username already Exists\n");
+	 //CREATING NEW PROFILE
+	 ofstream file;
+	 file.open(profile_path);
+	 if (!file.is_open())
+		 throw invalid_argument("Unable to Profile\n");
 	 file << "username\\\\" << _username << endl;
 	 file << "password\\\\" << _password << endl;
 	 file << "membership\\\\" << membership << endl;
@@ -168,6 +177,7 @@ void User::viewProgress()
 	 file << "history" << endl;
 	 file.close();
 
+	 //SETTING THE USERNAME, PASSWORD, AND INITIALIZING THE HISTORY
 	 setUsername(_username);
 	 setPassword(_password);
 	 history = Progress(username);
