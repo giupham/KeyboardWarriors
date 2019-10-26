@@ -14,7 +14,6 @@ using namespace std;
 class Test
 {
 	private:
-		double WPM;
 		string path;
 	public:
 	  Test();
@@ -22,6 +21,6 @@ class Test
 	  string title;
 	  Result testResult;
 	  void beginTest(string input);
-	  Result calculateWPM(string filename, double duration, string inputContent);
+	  bool calculateWPM(string filename, double duration, string inputContent);
 	  int getTestWordCount(string filename);
 };

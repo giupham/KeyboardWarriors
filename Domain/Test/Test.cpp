@@ -7,7 +7,6 @@ using namespace std;
 
 Test::Test()
 {
-	WPM = 0;
 	path = "";
 	testResult = Result();
 	title = "";
@@ -28,7 +27,6 @@ void Test::beginTest(string selectedTest)
 	string lineNext;
 	path = "../../TypingTests/" + selectedTest;
 	ifstream myfile(path);
-	getTestWordCount(path);
 	string currInput;
 	if (myfile.is_open()) {
 		start = clock();
@@ -44,43 +42,65 @@ void Test::beginTest(string selectedTest)
 				inputContent += currInput + '\n';
 				line = lineNext;
 			}
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << line << '\n';
 			getline(cin, currInput);
 			inputContent += currInput + '\n';
 		}
 		duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
-		testResult = calculateWPM(path, duration, inputContent);
-		cout << "WPM: " << WPM << endl;
+		calculateWPM(path, duration, inputContent);
 	}
 	myfile.close();
 }
 
-Result Test::calculateWPM(string path, double duration, string inputContent) {
+bool Test::calculateWPM(string path, double duration, string inputContent) {
 	int wordsCorrect = 0;
-	int wordsTotal = 1;
+	int wordsTotal = 0;
 	int count = 0;
 	int seeker = 0;
-	count = getTestWordCount(path);
 	//compare inputContent to file content
 	string inputContentLine = "";
 	string currFileLine = "";
 
 	ifstream myfile(path);
 	if (myfile.is_open()) {
+		istringstream sstreamInput = istringstream();
+		istringstream sstreamFile = istringstream();
+		string word1 = "";
+		string word2 = "";
+		int charCountInputLine = 0;
+		int charCountFileLine = 0;
+		int wordCountInputLine = 0;
+		int wordCountFileLine = 0;
+		int indexEndl = 0;
+
 		while (getline(myfile, currFileLine)) {
+			//trim \n
 			inputContentLine = inputContent.substr(seeker, inputContentLine.find('\n'));
-			//compare the inputLine to the fileContentLine
-			if (currFileLine.compare(inputContentLine)) {
-				//detect missed space by detecting inputContentLine.length() < fileContentLine.length()
-				istringstream sstream = istringstream();
+			indexEndl = inputContentLine.find_last_of("\n", inputContentLine.length());
+			inputContentLine = inputContent.substr(seeker, indexEndl);
+
+			sstreamInput.str(inputContentLine);
+			sstreamFile.str(currFileLine);
+			charCountInputLine = sstreamInput.gcount();
+			charCountFileLine = sstreamFile.gcount();
+
+			while (sstreamInput >> word1) {
+				sstreamFile >> word2;
+				if (word1.compare(word2) == 0) {
+					wordsCorrect++;
+				}
 			}
-			//move seeker to position for next line
+
+			//prep vars for parsing next line
+			sstreamInput.clear();
+			sstreamFile.clear();
 			seeker = inputContentLine.length();
 		}
 	}
-
-	testResult.putWPM(wordsCorrect/wordsTotal);
-	return testResult;
+	wordsTotal = getTestWordCount(path);
+	testResult = Result(wordsCorrect, duration);
+	return true;
 }
 
 int Test::getTestWordCount(string path) {
@@ -89,15 +109,12 @@ int Test::getTestWordCount(string path) {
 	ifstream myfile;
 	myfile.open(path);
 	if (myfile.is_open()) {
-		while (!myfile.eof()) {
-			myfile >> word;
-			cout << word << endl;
+		while (myfile >> word) {
 			count++;
 		}
 		//cout << "Number of words in file are " << count << endl;
 	}
 	myfile.close();
-	cin >> word;
 	return count;
 }
 

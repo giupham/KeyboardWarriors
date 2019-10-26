@@ -7,7 +7,7 @@
 int main()
 {
 	ConsoleView view = ConsoleView();
-	view.displayLoginOptions();
+	//view.displayLoginOptions();
 	view.displayOptions();
 	view.displayTestStart();
 }
