@@ -18,19 +18,20 @@ class TypingSession
 private:
 	string date;
 	string SessionID;
-	Test TypingTest;
 	double TimeTaken;
 
 public:
 	TypingSession();
 	~TypingSession();
 	User SessionUser;
+	Test TypingTest;
 	bool authenticated = false;
 	void StartSession(string selectedTest);
 	Result getTestResults();
 	//string getTimeStr();
 	string selectTest(string input);
 	void beginTest();
+	void updateProgress(Progress&);
 };
 
 #endif

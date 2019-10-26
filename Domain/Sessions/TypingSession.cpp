@@ -42,10 +42,15 @@ Result TypingSession::getTestResults()
 {
 	Result test = Result();
 	return test;
+	updateProgress(SessionUser.history);
 }
 
 void TypingSession::beginTest() {
 	TypingTest.beginTest(TypingTest.title);
+}
+
+void TypingSession::updateProgress(Progress &newProgress) {
+
 }
 
 ////get time and date
