@@ -14,4 +14,7 @@ public:
 	void displayOptions();
 	void displayTestStart();
 	void displayLoginOptions();
+	void captureUserLoginInfo(string& un, string& pw);
+	void createNewUser();
+	void authenticateUser();
 };

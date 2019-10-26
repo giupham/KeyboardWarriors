@@ -2,6 +2,7 @@
 
 TypingSession::TypingSession()
 {
+	authenticated = false;
 	SessionUser = User();
 	date = "";
 	SessionID = "";

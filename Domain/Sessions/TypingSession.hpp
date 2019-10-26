@@ -25,6 +25,7 @@ public:
 	TypingSession();
 	~TypingSession();
 	User SessionUser;
+	bool authenticated = false;
 	void StartSession(string selectedTest);
 	Result getTestResults();
 	//string getTimeStr();
