@@ -168,3 +168,4 @@ void Progress::print_results()
 	}
 	cout << endl;
 }
+
