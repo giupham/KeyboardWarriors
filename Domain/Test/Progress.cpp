@@ -127,7 +127,6 @@ void Progress::updateUserProfile(string session_ID)
 {
 
 	ifstream input_file(profile_path);
-	cout << profile_path << endl;
 	if (!input_file.is_open())
 		throw invalid_argument("Unable to locate Profile\n");
 	string input;
@@ -148,7 +147,6 @@ void Progress::updateUserProfile(string session_ID)
 	//ADDING NEW RESULT INTO PROFILE
 	string new_session = session_ID + "\\\\" + to_string(Results[session_ID].getWPM());
 	lines.push_back(new_session);
-	cout << new_session << endl;
 
 	//PUTTING CHANGES BACK INTO THE PROFILE TXT
 	ofstream output_file(profile_path);
@@ -169,6 +167,8 @@ void Progress::print_results()
 		it++;
 	}
 	cout << endl;
+	if (cin.get() == '\n')
+		system("CLS");
 }
 
 int Progress::get_sess_num()
