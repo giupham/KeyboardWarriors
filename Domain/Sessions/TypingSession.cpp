@@ -15,7 +15,13 @@ TypingSession::~TypingSession()
 }
 
 void TypingSession::StartSession(string input) {
+	//cout << "running\n";
 	TypingTest.title = selectTest(input);
+	TypingTest.beginTest(TypingTest.title);
+	updateProgress(SessionUser.history, TypingTest.testResult);
+	cout << "WPM: " << TypingTest.testResult.getWPM() << endl;
+	if (cin.get() == '\n')
+		system("CLS");
 }
 
 string TypingSession::selectTest(string input)
@@ -44,7 +50,6 @@ Result TypingSession::getTestResults()
 }
 
 void TypingSession::beginTest() {
-	TypingTest.beginTest(TypingTest.title);
 	updateProgress(SessionUser.history, TypingTest.testResult);
 }
 
