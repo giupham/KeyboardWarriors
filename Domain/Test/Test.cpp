@@ -8,7 +8,6 @@ using namespace std;
 Test::Test()
 {
 	path = "";
-	testResult = Result();
 	title = "";
 }
 

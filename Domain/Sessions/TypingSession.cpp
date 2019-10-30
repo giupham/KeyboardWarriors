@@ -54,7 +54,6 @@ Result TypingSession::getTestResults()
 }
 
 void TypingSession::beginTest() {
-	updateProgress(SessionUser.history, TypingTest.testResult);
 }
 
 void TypingSession::updateProgress(Progress &newProgress, Result res) {

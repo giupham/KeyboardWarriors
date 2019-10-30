@@ -8,7 +8,7 @@ int main()
 {
 	ConsoleView view = ConsoleView();
 
-	view.displayLoginOptions();
+	//view.displayLoginOptions();
 	view.displayChoices();
 
 	system("pause");
