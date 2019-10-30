@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <Windows.h>
 #include "Result.hpp"
 using namespace std;
 class Progress
@@ -22,6 +23,7 @@ class Progress
 	  ~Progress();
 	  Result locateResult(string);
 	  float getAverageWPM();
+	  int get_sess_num();
 	  void updateResults(string, Result);
 	  void updateUserProfile(string);
 	  void print_results();

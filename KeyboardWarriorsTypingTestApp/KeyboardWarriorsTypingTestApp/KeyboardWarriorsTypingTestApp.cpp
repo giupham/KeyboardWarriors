@@ -7,9 +7,16 @@
 int main()
 {
 	ConsoleView view = ConsoleView();
-	//view.displayLoginOptions();
-	view.displayOptions();
-	view.displayTestStart();
+
+	view.displayLoginOptions();
+	view.displayChoices();
+
+	system("pause");
+//=======
+//	//view.displayLoginOptions();
+//	view.displayOptions();
+//	view.displayTestStart();
+//>>>>>>> 0251ff975d0af113a6e8a6d2ebd6c933407b551f
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -21,17 +21,19 @@ private:
 	double TimeTaken;
 
 public:
+	Test TypingTest;
+	User SessionUser;
+	bool authenticated = false;
+
 	TypingSession();
 	~TypingSession();
-	User SessionUser;
-	Test TypingTest;
-	bool authenticated = false;
+
 	void StartSession(string selectedTest);
 	Result getTestResults();
 	//string getTimeStr();
 	string selectTest(string input);
 	void beginTest();
-	void updateProgress(Progress&);
+	void updateProgress(Progress&, Result);
 };
 
 #endif
