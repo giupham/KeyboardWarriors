@@ -48,7 +48,12 @@ void Test::beginTest(string selectedTest)
 			inputContent += currInput + '\n';
 		}
 		duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
-		calculateWPM(path, duration, inputContent);
+		string test;
+		if (calculateWPM(path, duration, inputContent)) {
+			system("CLS");
+			cout << "Your WPM: " << testResult.getWPM();
+			cin >> test;
+		}
 	}
 	myfile.close();
 }
@@ -90,6 +95,22 @@ bool Test::calculateWPM(string path, double duration, string inputContent) {
 				if (word1.compare(word2) == 0) {
 					wordsCorrect++;
 				}
+				else if(charCountFileLine > charCountInputLine) {
+					//User missed a space or character
+					if (charCountFileLine > charCountInputLine - 1)
+						continue;
+					if (charCountFileLine > charCountInputLine - 2)
+						wordsCorrect--;
+					continue;
+				}
+				else {
+					//(charCountFileLine < charCountInputLine)
+					if (charCountFileLine < charCountInputLine - 1)
+						continue;
+					if (charCountFileLine < charCountInputLine - 2)
+						wordsCorrect--;
+					continue;
+				}
 			}
 
 			//prep vars for parsing next line
@@ -116,6 +137,21 @@ int Test::getTestWordCount(string path) {
 	}
 	myfile.close();
 	return count;
+}
+
+void Test::reformatFileContentForWindowsChars(string path) {
+	ifstream readFrom(path);
+	ofstream writeTo("../../TypingTests/example.txt");
+	string currLine = "";
+	string content = "";
+	if (readFrom.is_open()) {
+		while (getline(readFrom, currLine)) {
+			content += currLine + '\n';
+		}
+		writeTo << content;
+	}
+	readFrom.close();
+	writeTo.close();
 }
 
 

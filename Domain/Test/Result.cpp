@@ -6,14 +6,15 @@ Result::Result()
     WPM = 0; 
 }
 
-Result::Result(float _WPM)
+Result::Result(int _WPM)
 {
 	WPM = _WPM;
 }
 
-Result::Result(int words, int sec)
+Result::Result(float words, float sec)
 {
-    WPM = int((words/sec)*(60/1)); 
+	float test = (words / sec);
+    WPM = int(test*60); 
 }
 
 Result::~Result()

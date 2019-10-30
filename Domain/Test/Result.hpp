@@ -11,8 +11,8 @@ private:
 	int WPM;
 public:
 	Result();
-	Result(float WPM);
-	Result(int words, int secs);
+	Result(int WPM);
+	Result(float words, float secs);
 	~Result();
 	int getWPM();
 	bool putWPM(int testWPM);

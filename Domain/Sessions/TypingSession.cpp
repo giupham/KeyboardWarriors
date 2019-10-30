@@ -7,6 +7,10 @@ TypingSession::TypingSession()
 	date = "";
 	SessionID = "";
 	TypingTest = Test();
+	/*
+	TypingTest.setPath("../../TypingTests/CSS.txt");
+	TypingTest.reformatFileContentForWindowsChars(TypingTest.getPath());
+	*/
 }
 
 TypingSession::~TypingSession()

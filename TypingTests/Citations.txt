@@ -6,3 +6,9 @@ The Blue Light
 http://www.gutenberg.org/files/2591/2591-h/2591-h.htm#link2H_4_0050
 The Yellow Wallpaper
 http://www.gutenberg.org/files/1952/1952-h/1952-h.htm
+CPP code
+https://www.cpp.thiyagaraaj.com/data-structures-in-c/sorting-programs/simple-merge-sort-program-in-c
+CSS code
+https://codepen.io/matchboxhero/pen/JrLJeb?editors=1100
+Python code
+https://www.quora.com/What-are-some-cool-Python-programs-that-require-less-than-50-lines-of-code

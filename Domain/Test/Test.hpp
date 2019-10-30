@@ -23,4 +23,13 @@ class Test
 	  void beginTest(string input);
 	  bool calculateWPM(string filename, double duration, string inputContent);
 	  int getTestWordCount(string filename);
+	  void reformatFileContentForWindowsChars(string filepath);
+
+	  string getPath() {
+		  return path;
+	  }
+
+	  void setPath(string p) {
+		  path = p;
+	  }
 };
