@@ -1,33 +1,86 @@
 #pragma
 #include <string>
 #include <ctime>
+#include <iostream>
+#include "../../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IPaymentServices.h"
 using namespace std;
 
 struct Credit {
-	std::string FirstName;
-	std::string LastName;
-	std::string creditNum;
-	std::string expDate;
-	std::string secureCode;
+	string FirstName;
+	string LastName;
+	string creditNum;
+	string expDate;
+	string secureCode;
 };
 
-class Payment
+class Payment: public IPaymentServices
 {
 private:
-	std::string Token;
-	std::time_t Date;
-	std::string UserID;
+	string Token;
+	time_t Date;
+	string UserID;
 	Credit creditInfo;
-
+	string purchaseItemID;
+	string orderID;
 
 public:
 	Payment();
 	~Payment();
-	bool TryPurchaseMonth(Credit);
-	bool TryPurchaseYear(Credit);
-	void setCreditInfo(std::string fname, std::string lname, std::string creditNum, std::string secureCode, std::string expDate);
-	
+	string getOrderID() { return orderID; };
+	void setOrderID(string oID) { orderID = oID; };
+	bool setCreditInfo(string fname, string lname, string creditNum, string secureCode, string expDate);
+	bool TryPurchaseMonth(string purchaseItemID, Credit);
+	bool TryPurchaseYear(string purchaseItemID, Credit);
+	string get_purchaseItemID() { return purchaseItemID; };
+	bool set_purchaseItemID(string);
 
+	bool CreatePayment() {
+		cout << "Payment Created!" << endl;
+		return true;
+	}
 
+	bool SetPaymentInfo() {
+		cout << "Payment Info Set!" << endl;
+		return true;
+	}
 
+	bool GetPaymentInfo() {
+		cout << "Payment Details gotten!" << endl;
+		return true;
+	}
+
+	bool EditPaymentInfo() {
+		cout << "Go to Edit Payment Info!" << endl;
+		return true;
+	}
+
+	bool AuthorizePaymentInfo() {
+		cout << "Authorized Payment Info!" << endl;
+		return true;
+	}
+
+	string CreateOrder(string purchaseItemID) {
+		cout << "Order Created!" << endl;
+		return "OrderIDTest";
+	}
+
+	bool UpdateOrder(string orderID) {
+		cout << "Updated Order!" << endl;
+		return true;
+	}
+
+	bool GetOrderInfo(string orderID) {
+		cout << "Order Details gotten!" << endl;
+		return true;
+	}
+
+	bool AuthorizePaymentForOrder(string orderID) {
+		cout << "Payment Authorized for Order!" << endl;
+		return true;
+	}
+
+	bool CapturePaymentForOrder(string orderID) {
+		cout << "Payment Made, Order Submitted!" << endl;
+		return true;
+	}
 };

@@ -9,14 +9,6 @@ ConsoleView::~ConsoleView(){
 
 }
 
-void ConsoleView::captureUserLoginInfo(string& un, string& pw) {
-	cout << "Username: ";
-	cin >> un;
-	cout << "Password: ";
-	cin >> pw;
-	system("CLS");
-}
-
 void ConsoleView::displayOptions() {
 	system("CLS");
 	string input;
@@ -35,7 +27,6 @@ void ConsoleView::displayTestStart() {
 	cin.ignore();
 	if (cin.get() == '\n') {
 		system("CLS");
-		//sess.beginTest();
 	}
 }
 
@@ -54,6 +45,14 @@ void ConsoleView::displayLoginOptions() {
 	if (input == "2") {
 		createNewUser();
 	}
+}
+
+void ConsoleView::captureUserLoginInfo(string& un, string& pw) {
+	cout << "Username: ";
+	cin >> un;
+	cout << "Password: ";
+	cin >> pw;
+	system("CLS");
 }
 
 void ConsoleView::createNewUser() {
@@ -102,9 +101,45 @@ void ConsoleView::displayChoices()
 			displayOptions();
 		else if (input == '2')
 			sess.SessionUser.viewProgress();
-		else if (input == '3')
-			exit_system = false;
+		else if (input == '3') {
+			displayPurchaseOptions();
+		}
 		else if (input == '4')
 			exit_system = true;
 	} while (!exit_system);
+}
+
+void ConsoleView::displayPurchaseOptions() {
+	string input = "";
+	system("CLS");
+	cout << "Select Purchase Item: Please type the Selection ID and press 'Enter'" << endl;
+	cout << "1) Monthly Subscription " << endl;
+	cout << "2) Yearly Subscription " << endl;
+	cin >> input;
+	if (input == "1")
+		sess.SessionUser.getPayment().setOrderID("Monthly");
+	else if (input == "2")
+		sess.SessionUser.getPayment().setOrderID("Yearly");
+	system("CLS");
+	displayCapturePaymentInfo();
+}
+
+void ConsoleView::displayCapturePaymentInfo() {
+	cout << "Please enter Payment Info: " << endl;
+	string fname, lname, creditNum, secureCode, expDate;
+	cout << "F Name: ";
+	cin >> fname;
+	cout << "L Name: ";
+	cin >> lname;
+	cout << "CC#: ";
+	cin >> creditNum;
+	cout << "CRV#: ";
+	cin >> secureCode;
+	cout << "Exp Date: ";
+	cin >> expDate;
+	Payment p = sess.SessionUser.getPayment();
+	if (p.setCreditInfo(fname, lname, creditNum, secureCode, expDate))
+		p.setCreditInfo(fname, lname, creditNum, secureCode, expDate);
+		sess.SessionUser.createOrder(sess.SessionUser.getPayment().getOrderID());
+		system("CLS");
 }

@@ -6,7 +6,7 @@ User::User()
 	username = "";
 	password = "";
 	membership = false;
-	
+	pSess = Payment();
 }
 
 User::~User()
@@ -101,24 +101,48 @@ string User::getUsername() {
 	return username;
 }
 
-bool User::makePayment()
-{
+bool User::createOrder(string purchaseItemID) {
+	pSess.setOrderID(pSess.CreateOrder(purchaseItemID));
+	if (pSess.getOrderID() != "") {
+		bool success = makePayment(pSess);
+		if (success) {
+			setMembership(1);
+			if (pSess.getOrderID() == "1")
+				cout << "Monthly Subscription Purchased!" << endl;
+			else if (pSess.getOrderID() == "2")
+				cout << "Yearly Subscription Purchased!" << endl;
+			cout << "Press 'Enter' to Continue...\n";
+			cin.ignore();
+			if (cin.get() == '\n') {
+				return true;
+			}
+		}
+	}
 	return true;
 }
 
-//wait til sessions is done
-//bool User::requestTypingTest()
-//{
-//	TypingSession ts = TypingSession(username);
-//	ts.selectTest();
-//	
-//	return true;
-//}
+bool User::makePayment(Payment pSess)
+{
+	pSess.CreatePayment();
+	pSess.SetPaymentInfo();
+	pSess.AuthorizePaymentInfo();
+	cout << "Confirm purchase by pressing 'Enter'. (Payment not yet completed.)\n";
+	cin.ignore();
+	if (cin.get() == '\n') {
+		pSess.AuthorizePaymentForOrder(pSess.getOrderID());
+		pSess.CapturePaymentForOrder(pSess.getOrderID());
+		return true;
+	}
+	else
+		return false;
+}
+
 
 void User::setMembership(bool isMember) {
 	membership = isMember;
 	try {
 		profileWrite();
+		subscription.membershipActive = 1;
 	}
 	catch (exception& ex)
 	{
@@ -156,7 +180,7 @@ void User::viewProgress()
 	options.push_back("1) Request Typing Test");
  	options.push_back("2) View Personal Progress");
 	options.push_back("3) Make Payment");
-	options.push_back("4) Quit");
+	options.push_back("4) Logout");
 	return options;
  }
 

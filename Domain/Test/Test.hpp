@@ -9,6 +9,7 @@
 #include <ctime>
 #include <list>
 #include <Windows.h>
+#include <synchapi.h>
 using namespace std;
 
 class Test
@@ -22,6 +23,7 @@ class Test
 	  Result testResult;
 	  void beginTest(string input);
 	  bool calculateWPM(string filename, double duration, string inputContent);
+	  void viewResults(Result);
 	  int getTestWordCount(string filename);
 	  void reformatFileContentForWindowsChars(string filepath);
 

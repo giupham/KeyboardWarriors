@@ -157,16 +157,16 @@ void Progress::updateUserProfile(string session_ID)
 
 void Progress::print_results()
 {
+	system("CLS");
 	map<string, Result>::iterator it = Results.begin();
-	cout << "Results" << endl;
+	cout << "-----------------------------Results History-----------------------------" << endl;
 	while (it != Results.end())
 	{
-		cout << "Session ID: " << it->first << endl;
-		cout << "WPM: " << it->second.getWPM() << endl << endl;
-
+		cout << "Session ID: " << it->first << '\t' << "WPM: " << it->second.getWPM() << endl << endl;
 		it++;
 	}
 	cout << endl;
+	cin.ignore();
 	if (cin.get() == '\n')
 		system("CLS");
 }

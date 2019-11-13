@@ -161,6 +161,7 @@
     <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp" />
     <ClInclude Include="..\..\UI\console.hpp" />
     <ClInclude Include="Difficulty.hpp" />
+    <ClInclude Include="IPaymentServices.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Domain\Sessions\TypingSession.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="..\..\TechServices\Payment\Payment.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Subscription.cpp" />
     <ClCompile Include="..\..\UI\console.cpp" />
+    <ClCompile Include="IPaymentServices.cpp" />
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

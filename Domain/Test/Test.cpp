@@ -15,7 +15,6 @@ Test::~Test()
 {
 }
 
-// WHICH TEST TO IMPLEMENT 
 void Test::beginTest(string selectedTest)
 {
 	clock_t start;
@@ -47,11 +46,9 @@ void Test::beginTest(string selectedTest)
 			inputContent += currInput + '\n';
 		}
 		duration = (clock() - (double)start) / (double)CLOCKS_PER_SEC;
-		string test;
 		if (calculateWPM(path, duration, inputContent)) {
-			system("CLS");
-			cout << "Your WPM: " << testResult.getWPM();
-			cin >> test;
+			calculateWPM(path, duration, inputContent);
+			viewResults(testResult);
 		}
 	}
 	myfile.close();
@@ -121,6 +118,14 @@ bool Test::calculateWPM(string path, double duration, string inputContent) {
 	wordsTotal = getTestWordCount(path);
 	testResult = Result(wordsCorrect, duration);
 	return true;
+}
+
+void Test::viewResults(Result r) {
+	system("CLS");
+	cout << "Your WPM: " << r.getWPM() << endl;
+	cout << endl;
+	Sleep(4000);
+	system("CLS");
 }
 
 int Test::getTestWordCount(string path) {

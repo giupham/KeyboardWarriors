@@ -23,9 +23,6 @@ void TypingSession::StartSession(string input) {
 	TypingTest.title = selectTest(input);
 	TypingTest.beginTest(TypingTest.title);
 	updateProgress(SessionUser.history, TypingTest.testResult);
-	cout << "WPM: " << TypingTest.testResult.getWPM() << endl;
-	if (cin.get() == '\n')
-		system("CLS");
 }
 
 string TypingSession::selectTest(string input)
@@ -53,19 +50,7 @@ Result TypingSession::getTestResults()
 	return TypingTest.testResult;
 }
 
-void TypingSession::beginTest() {
-}
 
 void TypingSession::updateProgress(Progress &newProgress, Result res) {
 	newProgress.updateResults(to_string(newProgress.get_sess_num() + 1), res);
 }
-
-////get time and date
-//string TypingSession::getTimeStr()
-//{
-//    // time_t now = chrono::system_clock::to_time_t(chrono::system_clock::now());
-//
-//    string s(30, '\0');
-//    // strftime(&s[0], s.size(), "%Y-%m-%d %H:%M:%S", localtime_s(&now));
-//    return s;
-//}
