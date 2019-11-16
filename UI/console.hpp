@@ -1,9 +1,4 @@
 #pragma once
-
-#include <vector>
-#include <string>
-#include <iostream>
-#include <Windows.h>
 #include "../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IUserInterface.h"
 using namespace std;
 

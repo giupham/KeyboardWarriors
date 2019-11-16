@@ -66,6 +66,9 @@
     <ClInclude Include="IUserInterface.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="ISession.h">
+      <Filter>Header Files\Domain\Session</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">

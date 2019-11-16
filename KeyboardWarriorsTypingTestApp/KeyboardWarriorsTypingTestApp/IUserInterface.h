@@ -1,11 +1,11 @@
 #pragma once
-
 #include <vector>
 #include <string>
 #include <iostream>
 #include <Windows.h>
 #include "../../Domain/Sessions/Session.hpp"
 using namespace std;
+
 class IUserInterface
 {
 private:
@@ -22,4 +22,3 @@ public:
 	virtual void displayPurchaseOptions() = 0;
 	virtual void displayCapturePaymentInfo() = 0;
 }; 
-#pragma once

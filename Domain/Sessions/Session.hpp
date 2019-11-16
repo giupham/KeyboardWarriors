@@ -1,15 +1,13 @@
 #pragma once
 #ifndef Session_H
 #define Session_H
-#include "../Test/Test.hpp"
-#include "../Test/Result.hpp"
-#include "../User/User.hpp"
+#include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/ISession.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
 #pragma once
-class Session
+class Session : public ISession
 {
 private:
 	string date;
