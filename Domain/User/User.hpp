@@ -1,14 +1,8 @@
-#pragma
-#include <string>
-#include <vector>
-#include <fstream>
-#include <iostream>
-#include "../Test/Progress.hpp"
-#include "../../TechServices/Payment/Payment.hpp"
-#include "../../TechServices/Payment/Subscription.hpp"
+#pragma once
+#include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IUser.h"
 using namespace std;
 
-class User
+class User : public IUser
 {
 	private:
 		std::string username;

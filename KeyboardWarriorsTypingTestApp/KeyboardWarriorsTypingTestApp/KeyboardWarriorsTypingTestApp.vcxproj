@@ -163,6 +163,7 @@
     <ClInclude Include="Difficulty.hpp" />
     <ClInclude Include="IPaymentServices.h" />
     <ClInclude Include="ISession.h" />
+    <ClInclude Include="IUser.h" />
     <ClInclude Include="IUserInterface.h" />
   </ItemGroup>
   <ItemGroup>

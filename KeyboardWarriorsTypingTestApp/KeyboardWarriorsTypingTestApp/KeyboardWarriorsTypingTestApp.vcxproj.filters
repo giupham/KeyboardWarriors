@@ -69,6 +69,9 @@
     <ClInclude Include="ISession.h">
       <Filter>Header Files\Domain\Session</Filter>
     </ClInclude>
+    <ClInclude Include="IUser.h">
+      <Filter>Header Files\Domain\User</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">
