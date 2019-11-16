@@ -98,9 +98,6 @@
     <ClCompile Include="..\..\TechServices\Payment\Payment.cpp">
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
-    <ClCompile Include="IPaymentServices.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Domain\Sessions\Session.cpp">
       <Filter>Header Files\Domain\Session</Filter>
     </ClCompile>
