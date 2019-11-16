@@ -4,12 +4,12 @@
 #include <string>
 #include <iostream>
 #include <Windows.h>
-#include "../Domain/Sessions/TypingSession.hpp"
+#include "../Domain/Sessions/Session.hpp"
 using namespace std;
 class ConsoleView
 {
 private:
-	TypingSession sess;
+	Session sess;
 public:
 	ConsoleView();
 	~ConsoleView();
@@ -17,6 +17,7 @@ public:
 	void displayTestStart();
 	void displayLoginOptions();
 	void captureUserLoginInfo(string& un, string& pw);
+	void changePassword();
 	void createNewUser();
 	void authenticateUser();
 	void displayChoices();

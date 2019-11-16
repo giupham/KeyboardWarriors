@@ -2,7 +2,7 @@
 
 
 ConsoleView::ConsoleView() {
-	sess = TypingSession();
+	sess = Session();
 }
 
 ConsoleView::~ConsoleView(){
@@ -35,6 +35,7 @@ void ConsoleView::displayLoginOptions() {
 	cout << "Welcome. Are you an existing user or new user?" << endl;
 	cout << "1) Existing User" << endl;
 	cout << "2) New User" << endl;
+	cout << "3) Change Password" << endl;
 	cin >> input;
 	system("CLS");
 
@@ -45,6 +46,9 @@ void ConsoleView::displayLoginOptions() {
 	if (input == "2") {
 		createNewUser();
 	}
+	if (input == "3") {
+		changePassword();
+	}
 }
 
 void ConsoleView::captureUserLoginInfo(string& un, string& pw) {
@@ -52,6 +56,18 @@ void ConsoleView::captureUserLoginInfo(string& un, string& pw) {
 	cin >> un;
 	cout << "Password: ";
 	cin >> pw;
+	system("CLS");
+}
+
+void ConsoleView::changePassword() {
+	string pw = "";
+	authenticateUser();
+	cout << "New Password: ";
+	cin >> pw;
+	sess.SessionUser.changePassword(pw);
+	system("CLS");
+	cout << "Password Changed!" << endl;
+	Sleep(2000);
 	system("CLS");
 }
 
