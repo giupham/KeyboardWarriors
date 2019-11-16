@@ -4,9 +4,10 @@
 #include <string>
 #include <iostream>
 #include <Windows.h>
-#include "../Domain/Sessions/Session.hpp"
+#include "../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IUserInterface.h"
 using namespace std;
-class ConsoleView
+
+class ConsoleView: public IUserInterface
 {
 private:
 	Session sess;

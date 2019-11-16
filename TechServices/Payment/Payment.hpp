@@ -2,7 +2,7 @@
 #include <string>
 #include <ctime>
 #include <iostream>
-#include "../../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IPaymentServices.h"
+#include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IPaymentServices.h"
 using namespace std;
 
 struct Credit {
