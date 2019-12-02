@@ -9,14 +9,70 @@ Test::Test()
 {
 	path = "";
 	title = "";
+	fillTestTypes();
 }
 
 Test::~Test()
 {
 }
 
-void Test::beginTest(string selectedTest)
+void Test::fillTestTypes()
 {
+	vector<string> easy, medium, hard, css, cpp, python;
+	easy.push_back("Alice1.txt");
+	easy.push_back("Alice4.txt");
+	easy.push_back("Anthem1.txt");
+	easy.push_back("GrimmsBlueLight1.txt");
+	easy.push_back("GrimmsBlueLight4.txt");
+	easy.push_back("YellowWallpaper1.txt");
+
+	medium.push_back("Alice2.txt");
+	medium.push_back("Alice5.txt");
+	medium.push_back("Anthem2.txt");
+	medium.push_back("GrimmsBlueLight2.txt");
+	medium.push_back("GrimmsBlueLight5.txt");
+	medium.push_back("YellowWallpaper2.txt");
+
+	hard.push_back("Alice3.txt");
+	hard.push_back("Alice6.txt");
+	hard.push_back("Anthem3.txt");
+	hard.push_back("GrimmsBlueLight3.txt");
+	hard.push_back("GrimmsBlueLight6.txt");
+	hard.push_back("YelllowWallpaper3.txt");
+
+	for(int i = 1; i <= 3; i++)
+		css.push_back("CSS" + to_string(i) + ".txt");
+		python.push_back("PY" + to_string(i) + ".txt");
+		cpp.push_back("CPP" + to_string(i) + ".txt");
+
+	test_types["easy"] = easy;
+	test_types["medium"] = medium;
+	test_types["hard"] = hard;
+	test_types["CSS"] = css;
+	test_types["PYTHON"] = python;
+	test_types["CPP"] = cpp;
+}
+
+void Test::displayTestStart() {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+	system("CLS");
+	cout << "This is a line by line typing test." << endl;
+	cout << "Please press 'Enter' at the end of each line to move to the next line.\n" << endl;
+	cout << "Please press 'Enter' to start the clock." << endl;
+	cin.ignore();
+	if (cin.get() == '\n') {
+		system("CLS");
+	}
+}
+
+void Test::beginTest()
+{
+	string selectedTest = selectTest();
+
+	cout << "\nSelected Test = " << selectedTest << endl;
+
+	displayTestStart();
+
 	clock_t start;
 	double duration = 0;
 
@@ -24,6 +80,7 @@ void Test::beginTest(string selectedTest)
 	string line;
 	string lineNext;
 	path = "../../TypingTests/" + selectedTest;
+
 	ifstream myfile(path);
 	string currInput;
 	if (myfile.is_open()) {
@@ -157,6 +214,3 @@ void Test::reformatFileContentForWindowsChars(string path) {
 	readFrom.close();
 	writeTo.close();
 }
-
-
-

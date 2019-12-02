@@ -22,9 +22,8 @@ public:
 	Session();
 	~Session();
 
-	void StartSession(string selectedTest);
+	void StartSession();
 	Result getTestResults();
-	string selectTest(string input);
 	void updateProgress(Progress&, Result);
 };
 

@@ -1,6 +1,6 @@
 #include "User.hpp"
 #include <filesystem>
-//new user       
+//new user
 User::User()
 {
 	username = "";
@@ -26,9 +26,18 @@ User::User(string _username, string _password)
 	{
 		throw ex;
 	}
-	membership = false;
 	history = Progress(username);
 }
+
+// copy constructor
+User::User(const User& obj)
+{
+	username = obj.username;
+	password = obj.password;
+	membership = obj.membership;
+	history = Progress(username);
+}
+
 void User::readProfile()
 {
 	string profile_path = "../../KeyboardWarriorsTypingTestApp/User_Profiles/" + username + ".txt";
@@ -218,7 +227,7 @@ void User::viewProgress()
 	 vector<string> lines;
 	 while (getline(input_file, input))
 		 lines.push_back(input);
-	 
+
 	 for (auto& line : lines)
 	 {
 		 size_t found = line.find("password");
@@ -229,7 +238,7 @@ void User::viewProgress()
 		 {
 			 string member = (membership)?"1":"0";
 			 line = "membership\\\\" + member;
-			 
+
 		 }
 
 	 }
@@ -239,5 +248,5 @@ void User::viewProgress()
 	 for (auto const& line : lines)
 		 output_file << line << endl;
 	 output_file.close();
-	 
+
  }

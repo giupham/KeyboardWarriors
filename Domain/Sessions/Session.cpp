@@ -6,7 +6,6 @@ Session::Session()
 	SessionUser = User();
 	date = "";
 	SessionID = "";
-	TypingTest = Test();
 	/*
 	TypingTest.setPath("../../TypingTests/CSS.txt");
 	TypingTest.reformatFileContentForWindowsChars(TypingTest.getPath());
@@ -18,31 +17,15 @@ Session::~Session()
 
 }
 
-void Session::StartSession(string input) {
+void Session::StartSession() {
 	//cout << "running\n";
-	TypingTest.title = selectTest(input);
-	TypingTest.beginTest(TypingTest.title);
-	updateProgress(SessionUser.history, TypingTest.testResult);
-}
-
-string Session::selectTest(string input)
-{
-	string title = "";
-	if (input == "1")
-		title = "Alice1.txt";
-	else if (input == "2")
-		title = "Alice2.txt";
-	else if (input == "3")
-		title = "Alice3.txt";
-	else if (input == "4")
-		title = "Py.txt";
-	else if (input == "5")
-		title = "CSS.txt";
-	else if (input == "6")
-		title = "CPP.txt";
+	if(SessionUser.getMembership())
+		TypingTest = MemTest();
 	else
-		title = "Alice1.txt";
-	return title;
+		TypingTest = RegTest();
+		
+	TypingTest.beginTest();
+	updateProgress(SessionUser.history, TypingTest.testResult);
 }
 
 Result Session::getTestResults()

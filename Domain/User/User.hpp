@@ -17,6 +17,7 @@ class User : public IUser
 	  User();
 	  //previous user
 	  User(string, string);
+		User(const User&);
 	  ~User();
 	  bool getMembership();
 	  void setMembership(bool);
