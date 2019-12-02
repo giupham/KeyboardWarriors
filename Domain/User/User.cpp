@@ -19,6 +19,7 @@ User::User(string _username, string _password)
 {
 	username = _username;
 	password = _password;
+	membership = false;
 	try {
 		readProfile();
 	}
