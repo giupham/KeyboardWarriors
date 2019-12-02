@@ -1,0 +1,37 @@
+from __future__ import print_function
+import gc
+gc.disable()  # noqa: E402
+import argparse
+import os
+import appdirs
+import re
+from cachelib import FileSystemCache, NullCache
+import requests
+import sys
+from . import __version__
+
+from pygments import highlight
+from pygments.lexers import guess_lexer, get_lexer_by_name
+from pygments.formatters.terminal import TerminalFormatter
+from pygments.util import ClassNotFound
+
+from pyquery import PyQuery as pq
+from requests.exceptions import ConnectionError
+from requests.exceptions import SSLError
+
+# Handle imports for Python 2 and 3
+if sys.version < '3':
+    import codecs
+    from urllib import quote as url_quote
+    from urllib import getproxies
+    from urlparse import urlparse, parse_qs
+
+    # Handling Unicode: http://stackoverflow.com/a/6633040/305414
+    def u(x):
+        return codecs.unicode_escape_decode(x)[0]
+else:
+    from urllib.request import getproxies
+    from urllib.parse import quote as url_quote, urlparse, parse_qs
+
+    def u(x):
+        return x
