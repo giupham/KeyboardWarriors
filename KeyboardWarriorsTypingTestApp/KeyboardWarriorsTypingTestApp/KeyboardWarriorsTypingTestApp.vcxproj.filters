@@ -72,6 +72,12 @@
     <ClInclude Include="IUser.h">
       <Filter>Header Files\Domain\User</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Domain\Test\FreeTest.hpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Domain\Test\MemTest.hpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">
@@ -100,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Domain\Sessions\Session.cpp">
       <Filter>Header Files\Domain\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\Test\FreeTest.cpp">
+      <Filter>Header Files\Domain\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Domain\Test\MemTest.cpp">
+      <Filter>Header Files\Domain\Test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

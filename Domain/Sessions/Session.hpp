@@ -15,7 +15,7 @@ private:
 	double TimeTaken;
 
 public:
-	Test TypingTest;
+	Test* TypingTest;
 	User SessionUser;
 	bool authenticated = false;
 

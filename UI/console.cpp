@@ -14,7 +14,16 @@ ConsoleView::~ConsoleView(){
 }
 
 void ConsoleView::displayOptions() {
-	sess.StartSession();
+	bool loop = true;
+	char input;
+	do
+	{
+		sess.StartSession();
+		cout << "\nPress q to Quit \nPress y to continue \n";
+		cin >> input;
+		if (input == 'q')
+			loop = false;
+	} while (loop);
 }
 
 void ConsoleView::displayLoginOptions() {

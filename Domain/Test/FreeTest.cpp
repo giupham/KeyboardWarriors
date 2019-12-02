@@ -1,24 +1,29 @@
 #include "FreeTest.hpp"
 
-string FreeTest::displayOptions()
+FreeTest::~FreeTest()
+{
+
+}
+
+char FreeTest::displayOptions()
 {
   system("CLS");
   char input;
-  bool loop;
+  bool loop = true;
   do
   {
     cout << "Please select test type: \n 1) EASY \n 2) MEDIUM \n 3) HARD \n";
     cin >> input;
     if(input == '1' || input == '2' || input == '3')
-      loop = false;
+		loop = false;
   }while(loop);
 
   return input;
 }
 
-void FreeTest::selectTest()
+string FreeTest::selectTest()
 {
-  string opt = displayOptions();
+  char opt = displayOptions();
   string type;
   switch(opt){
     case '1':
@@ -32,8 +37,10 @@ void FreeTest::selectTest()
       break;
   }
 
-  vector<string> test_list(test_types[type].begin(), test_types[type].end());
-  random = rand() % test_list.size() ;
+  vector<string> test_list = test_types[type];
+
+  srand(time(NULL));
+  int random = rand() % test_list.size() ;
 
   return test_list[random];
 }

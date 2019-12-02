@@ -153,6 +153,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Domain\Sessions\Session.hpp" />
+    <ClInclude Include="..\..\Domain\Test\FreeTest.hpp" />
+    <ClInclude Include="..\..\Domain\Test\MemTest.hpp" />
     <ClInclude Include="..\..\Domain\Test\Progress.hpp" />
     <ClInclude Include="..\..\Domain\Test\Result.hpp" />
     <ClInclude Include="..\..\Domain\Test\Test.hpp" />
@@ -168,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Domain\Sessions\Session.cpp" />
+    <ClCompile Include="..\..\Domain\Test\FreeTest.cpp" />
+    <ClCompile Include="..\..\Domain\Test\MemTest.cpp" />
     <ClCompile Include="..\..\Domain\Test\Progress.cpp" />
     <ClCompile Include="..\..\Domain\Test\Result.cpp" />
     <ClCompile Include="..\..\Domain\Test\Test.cpp" />

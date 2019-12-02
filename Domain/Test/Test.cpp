@@ -16,6 +16,12 @@ Test::~Test()
 {
 }
 
+string Test::selectTest()
+{
+	//can remove later
+	return "false";
+}
+
 void Test::fillTestTypes()
 {
 	vector<string> easy, medium, hard, css, cpp, python;
@@ -40,10 +46,12 @@ void Test::fillTestTypes()
 	hard.push_back("GrimmsBlueLight6.txt");
 	hard.push_back("YelllowWallpaper3.txt");
 
-	for(int i = 1; i <= 3; i++)
+	for (int i = 1; i <= 3; i++)
+	{
 		css.push_back("CSS" + to_string(i) + ".txt");
 		python.push_back("PY" + to_string(i) + ".txt");
 		cpp.push_back("CPP" + to_string(i) + ".txt");
+	}
 
 	test_types["easy"] = easy;
 	test_types["medium"] = medium;

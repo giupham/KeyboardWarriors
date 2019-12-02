@@ -4,6 +4,8 @@ class MemTest: public Test
 {
   public:
     MemTest() : Test() {};
+	virtual ~MemTest();
     string selectTest();
-    string displayOptions();
+    char displayOptions();
+
 };

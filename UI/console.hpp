@@ -10,7 +10,6 @@ public:
 	ConsoleView();
 	~ConsoleView();
 	void displayOptions();
-	void displayTestStart();
 	void displayLoginOptions();
 	void captureUserLoginInfo(string& un, string& pw);
 	void changePassword();

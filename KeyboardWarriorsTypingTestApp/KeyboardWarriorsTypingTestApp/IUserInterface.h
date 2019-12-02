@@ -12,7 +12,6 @@ private:
 	Session sess;
 public:
 	virtual void displayOptions() = 0;
-	virtual void displayTestStart() = 0;
 	virtual void displayLoginOptions() = 0;
 	virtual void captureUserLoginInfo(string& un, string& pw) = 0;
 	virtual void changePassword() = 0;

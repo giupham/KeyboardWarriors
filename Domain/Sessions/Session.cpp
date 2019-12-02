@@ -6,6 +6,7 @@ Session::Session()
 	SessionUser = User();
 	date = "";
 	SessionID = "";
+	TypingTest = NULL;
 	/*
 	TypingTest.setPath("../../TypingTests/CSS.txt");
 	TypingTest.reformatFileContentForWindowsChars(TypingTest.getPath());
@@ -14,23 +15,23 @@ Session::Session()
 
 Session::~Session()
 {
-
+	delete TypingTest;
 }
 
 void Session::StartSession() {
 	//cout << "running\n";
 	if(SessionUser.getMembership())
-		TypingTest = MemTest();
+		TypingTest = new MemTest();
 	else
-		TypingTest = RegTest();
+		TypingTest = new FreeTest();
 		
-	TypingTest.beginTest();
-	updateProgress(SessionUser.history, TypingTest.testResult);
+	TypingTest->beginTest();
+	updateProgress(SessionUser.history, TypingTest->testResult);
 }
 
 Result Session::getTestResults()
 {
-	return TypingTest.testResult;
+	return TypingTest->testResult;
 }
 
 

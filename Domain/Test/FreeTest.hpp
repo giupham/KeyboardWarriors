@@ -4,6 +4,7 @@ class FreeTest: public Test
 {
   public:
     FreeTest() : Test() {};
+	virtual ~FreeTest();
     string selectTest();
-    string displayOptions();
+    char displayOptions();
 };
