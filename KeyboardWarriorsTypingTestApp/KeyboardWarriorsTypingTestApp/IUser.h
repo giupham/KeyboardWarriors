@@ -17,11 +17,11 @@ private:
 	string password;
 	bool membership;
 	Subscription subscription;
+	Payment* pSess;
 
 
 public:
 	Progress history;
-	Payment* pSess;
 
 
 	virtual bool getMembership() = 0;

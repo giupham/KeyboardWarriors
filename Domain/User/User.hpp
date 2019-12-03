@@ -9,10 +9,11 @@ class User : public IUser
 		std::string password;
 		bool membership;
 		Subscription subscription;
+		Payment* pSess;
+
 
 	public:
 	  Progress history;
-	  Payment* pSess;
 
 
 	  User();

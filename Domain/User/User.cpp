@@ -256,6 +256,7 @@ void User::viewProgress()
 
  bool User::setOrderID(string sub)
  {
+	 system("CLS");
 	 char input;
 	 bool loop = true;
 	 do {
@@ -278,6 +279,7 @@ void User::viewProgress()
 
  void User::CapturePaymentInfo()
  {
+	 system("CLS");
 	 cout << "Please enter Payment Info: " << endl;
 	 string fname, lname, creditNum, secureCode, expDate;
 	 cout << "F Name: ";
