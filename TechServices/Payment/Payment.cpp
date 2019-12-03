@@ -7,6 +7,18 @@ Payment::Payment() {
 	UserID = "";
 	orderID = "";
 	purchaseItemID = "";
+	
+
+	time_t clock = time(0);
+	tm* now = localtime(&clock);
+	
+	current_time = to_string(now->tm_mon+1) + "-" 
+				+ to_string(now->tm_mday) + "-" 
+				+ to_string(now->tm_year + 1900) + "-"
+				+ to_string(now->tm_hour) + "-"
+				+ to_string(now->tm_min);
+	log_path = "../TechServices/Logging/" + current_time + ".txt";
+
 }
 
 Payment::~Payment() {

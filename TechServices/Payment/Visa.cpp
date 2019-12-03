@@ -2,11 +2,12 @@
 
 Visa::~Visa()
 {
-
+	log.close();
 }
 
 bool Visa::CreatePayment() {
 	cout << "Payment Created by Visa!" << endl;
+	log << current_time << endl << "Payment Created by Visa!" << endl;
 	return true;
 }
 

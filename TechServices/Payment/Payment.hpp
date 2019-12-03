@@ -3,6 +3,7 @@
 #include <ctime>
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 struct Credit {
@@ -23,6 +24,9 @@ protected:
 	string purchaseItemID;
 	string orderID;
 
+	string current_time;
+	string log_path;
+	ofstream log; 
 public:
 	Payment();
 	virtual ~Payment();

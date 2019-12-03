@@ -2,11 +2,12 @@
 
 Paypal::~Paypal()
 {
-
+	log.close();
 }
 
 bool Paypal::CreatePayment() {
 		cout << "Payment Created by Paypal!" << endl;
+		log << current_time << endl << "Payment Created by Paypal!" << endl;
 		return true;
 }
 
