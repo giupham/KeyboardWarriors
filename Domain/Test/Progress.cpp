@@ -15,7 +15,7 @@ Progress::Progress(string _id)
 	total_WPM = 0;
 	number_of_sessions = 0;
 	username = _id;
-	profile_path = "../../KeyboardWarriorsTypingTestApp/User_Profiles/" + username + ".txt";
+	profile_path = "../../TechServices/Persistence/User_Profiles/" + username + ".txt";
 	if (!read_profile())
 		throw invalid_argument("Profile does not exist in database.\n");
 	else

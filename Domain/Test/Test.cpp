@@ -87,7 +87,7 @@ void Test::beginTest()
 	string inputContent;
 	string line;
 	string lineNext;
-	path = "../../TypingTests/" + selectedTest;
+	path = "../../TechServices/Persistence/TypingTests/" + selectedTest;
 
 	ifstream myfile(path);
 	string currInput;

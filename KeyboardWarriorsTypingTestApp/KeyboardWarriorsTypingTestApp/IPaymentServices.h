@@ -2,6 +2,15 @@
 #include <string>
 using namespace std;
 
+
+struct Credit {
+	string FirstName;
+	string LastName;
+	string creditNum;
+	string expDate;
+	string secureCode;
+};
+
 class IPaymentServices
 {
 public:

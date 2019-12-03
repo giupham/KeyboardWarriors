@@ -1,19 +1,11 @@
-#pragma
+#pragma once
 #include <string>
 #include <ctime>
 #include <iostream>
 #include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IPaymentServices.h"
 using namespace std;
 
-struct Credit {
-	string FirstName;
-	string LastName;
-	string creditNum;
-	string expDate;
-	string secureCode;
-};
-
-class Payment: public IPaymentServices
+class Visa: public IPaymentServices
 {
 private:
 	string Token;
@@ -24,8 +16,8 @@ private:
 	string orderID;
 
 public:
-	Payment();
-	~Payment();
+	Visa();
+	~Visa();
 	string getOrderID() { return orderID; };
 	void setOrderID(string oID) { orderID = oID; };
 	bool setCreditInfo(string fname, string lname, string creditNum, string secureCode, string expDate);
@@ -35,52 +27,52 @@ public:
 	bool set_purchaseItemID(string);
 
 	bool CreatePayment() {
-		cout << "Payment Created!" << endl;
+		cout << "Payment Created by Visa!" << endl;
 		return true;
 	}
 
 	bool SetPaymentInfo() {
-		cout << "Payment Info Set!" << endl;
+		cout << "Payment Info Set by Visa!" << endl;
 		return true;
 	}
 
 	bool GetPaymentInfo() {
-		cout << "Payment Details gotten!" << endl;
+		cout << "Payment Details gotten by Visa!" << endl;
 		return true;
 	}
 
 	bool EditPaymentInfo() {
-		cout << "Go to Edit Payment Info!" << endl;
+		cout << "Go to Edit Payment Info by Visa!" << endl;
 		return true;
 	}
 
 	bool AuthorizePaymentInfo() {
-		cout << "Authorized Payment Info!" << endl;
+		cout << "Authorized Payment Info by Visa!" << endl;
 		return true;
 	}
 
 	string CreateOrder(string purchaseItemID) {
-		cout << "Order Created!" << endl;
+		cout << "Order Created by Visa!" << endl;
 		return "OrderIDTest";
 	}
 
 	bool UpdateOrder(string orderID) {
-		cout << "Updated Order!" << endl;
+		cout << "Updated Order by Visa!" << endl;
 		return true;
 	}
 
 	bool GetOrderInfo(string orderID) {
-		cout << "Order Details gotten!" << endl;
+		cout << "Order Details gotten by Visa!" << endl;
 		return true;
 	}
 
 	bool AuthorizePaymentForOrder(string orderID) {
-		cout << "Payment Authorized for Order!" << endl;
+		cout << "Payment Authorized for Order by Visa!" << endl;
 		return true;
 	}
 
 	bool CapturePaymentForOrder(string orderID) {
-		cout << "Payment Made, Order Submitted!" << endl;
+		cout << "Payment Made, Order Submitted by Visa!" << endl;
 		return true;
 	}
 };

@@ -41,7 +41,7 @@ User::User(const User& obj)
 
 void User::readProfile()
 {
-	string profile_path = "../../KeyboardWarriorsTypingTestApp/User_Profiles/" + username + ".txt";
+	string profile_path = "../../TechServices/Persistence/User_Profiles/" + username + ".txt";
 	ifstream file(profile_path);
 	string _username = "";
 	string _password = "";
@@ -133,6 +133,7 @@ bool User::createOrder(string purchaseItemID) {
 
 bool User::makePayment(Payment pSess)
 {
+	
 	pSess.CreatePayment();
 	pSess.SetPaymentInfo();
 	pSess.AuthorizePaymentInfo();
@@ -196,7 +197,7 @@ void User::viewProgress()
 
  void User::newProfile(string _username, string _password)
  {
-	 string profile_path = "../../KeyboardWarriorsTypingTestApp/User_Profiles/" + _username + ".txt";
+	 string profile_path = "../../TechServices/Persistence/User_Profiles/" + _username + ".txt";
 	 //CHECK IF PROFILE ALREADY EXISTS
 	 if (ifstream(profile_path))
 		 throw invalid_argument("Username already Exists\n");
@@ -220,7 +221,7 @@ void User::viewProgress()
 
  void User::profileWrite()
  {
-	 string profile_path = "../../KeyboardWarriorsTypingTestApp/User_Profiles/" + username + ".txt";
+	 string profile_path = "../../TechServices/Persistence/User_Profiles/" + username + ".txt";
 	 ifstream input_file(profile_path);
 	 if (!input_file.is_open())
 		 throw invalid_argument("Unable to locate Profile\n");

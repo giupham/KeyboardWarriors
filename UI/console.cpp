@@ -57,14 +57,25 @@ void ConsoleView::captureUserLoginInfo(string& un, string& pw) {
 
 void ConsoleView::changePassword() {
 	string pw = "";
+	string pw_copy = "";
 	authenticateUser();
 	cout << "New Password: ";
 	cin >> pw;
-	sess.SessionUser.changePassword(pw);
-	system("CLS");
-	cout << "Password Changed!" << endl;
-	Sleep(2000);
-	system("CLS");
+	cout << "Confirm Password: "
+	cin >> pw_copy; 
+	if (pw == pw_copy)
+	{
+		sess.SessionUser.changePassword(pw);
+		system("CLS");
+		cout << "Password Changed!" << endl;
+		Sleep(2000);
+		system("CLS");
+	}
+	else
+	{
+		cout << "New Password does not match Re-entered Password.\n"; 
+	}
+	
 }
 
 void ConsoleView::createNewUser() {

@@ -1,7 +1,7 @@
-#include "Payment.hpp"
+#include "Paypal.hpp"
 using namespace std;
 
-Payment::Payment() {
+Paypal::Paypal() {
 	Token = "";
 	time(&Date);
 	UserID = "";
@@ -9,11 +9,11 @@ Payment::Payment() {
 	purchaseItemID = "";
 }
 
-Payment::~Payment() {
+Paypal::~Paypal() {
 
 }
 
-bool Payment::setCreditInfo(string fname, string lname, string creditNum, string secureCode, string expDate) {
+bool Paypal::setCreditInfo(string fname, string lname, string creditNum, string secureCode, string expDate) {
 	creditInfo.FirstName = fname;
 	creditInfo.LastName = lname;
 	creditInfo.creditNum = creditNum;
@@ -22,16 +22,16 @@ bool Payment::setCreditInfo(string fname, string lname, string creditNum, string
 	return true;
 }
 
-bool Payment::set_purchaseItemID(string pItemID) {
+bool Paypal::set_purchaseItemID(string pItemID) {
 	purchaseItemID = pItemID;
 	return true;
 }
 
-bool Payment::TryPurchaseMonth(string purchaseItemID, Credit cc) {
+bool Paypal::TryPurchaseMonth(string purchaseItemID, Credit cc) {
 	return true;
 }
 
-bool Payment::TryPurchaseYear(string purchaseItemID, Credit cc) {
+bool Paypal::TryPurchaseYear(string purchaseItemID, Credit cc) {
 	return true;
 }
 
