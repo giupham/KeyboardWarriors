@@ -17,5 +17,4 @@ public:
 	void authenticateUser();
 	void displayChoices();
 	void displayPurchaseOptions();
-	void displayCapturePaymentInfo();
 };

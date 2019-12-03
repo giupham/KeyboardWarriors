@@ -1,5 +1,10 @@
 #include "Visa.hpp"
 
+Visa::~Visa()
+{
+
+}
+
 bool Visa::CreatePayment() {
 	cout << "Payment Created by Visa!" << endl;
 	return true;

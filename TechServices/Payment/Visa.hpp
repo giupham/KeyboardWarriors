@@ -7,6 +7,7 @@ using namespace std;
 
 class Visa: public Payment
 {
+public:
 	//constructor
 	Visa():Payment(){};
 	virtual ~Visa();

@@ -19,5 +19,4 @@ public:
 	virtual void authenticateUser() = 0;
 	virtual void displayChoices() = 0;
 	virtual void displayPurchaseOptions() = 0;
-	virtual void displayCapturePaymentInfo() = 0;
 }; 

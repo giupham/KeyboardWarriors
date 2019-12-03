@@ -160,7 +160,9 @@
     <ClInclude Include="..\..\Domain\Test\Test.hpp" />
     <ClInclude Include="..\..\Domain\User\User.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Payment.hpp" />
+    <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp" />
+    <ClInclude Include="..\..\TechServices\Payment\Visa.hpp" />
     <ClInclude Include="..\..\UI\console.hpp" />
     <ClInclude Include="Difficulty.hpp" />
     <ClInclude Include="IPaymentServices.h" />
@@ -177,7 +179,9 @@
     <ClCompile Include="..\..\Domain\Test\Test.cpp" />
     <ClCompile Include="..\..\Domain\User\User.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Payment.cpp" />
+    <ClCompile Include="..\..\TechServices\Payment\Paypal.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Subscription.cpp" />
+    <ClCompile Include="..\..\TechServices\Payment\Visa.cpp" />
     <ClCompile Include="..\..\UI\console.cpp" />
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp" />
   </ItemGroup>

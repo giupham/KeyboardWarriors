@@ -7,8 +7,9 @@ using namespace std;
 
 class Paypal: public Payment
 {
+public:
 	//constructor
-	Paypal():Payment(){};
+	Paypal() : Payment() {};
 	virtual ~Paypal();
 
 	//functions

@@ -11,7 +11,6 @@ User::User()
 
 User::~User()
 {
-	delete pSess;
 }
 
 //existing user
@@ -113,23 +112,10 @@ string User::getUsername() {
 
 bool User::createOrder(string purchaseItemID) {
 
-	//Choosing Payment program
-	char input; 
-	do{
-	cout << "Please select a payment program \n 1) Paypal \n 2) Visa \n";
-	cin >> input 
-	}while(input == '1' || input == '2');
-	
-	if (input == '1')
-		pSess = new Paypal();
-	else
-		pSess = new Visa();
-
-
 	//making payment
 	pSess->setOrderID(pSess->CreateOrder(purchaseItemID));
 	if (pSess->getOrderID() != "") {
-		bool success = makePayment(pSess);
+		bool success = makePayment();
 		if (success) {
 			setMembership(1);
 			if (pSess->getOrderID() == "1")
@@ -267,3 +253,52 @@ void User::viewProgress()
 	 output_file.close();
 
  }
+
+ bool User::setOrderID(string sub)
+ {
+	 char input;
+	 bool loop = true;
+	 do {
+		 cout << "Please select your Payment Program \n 1) Paypal \n 2) Visa \n";
+		 cin >> input;
+		 if (input == '1' || input == '2')
+			 loop = false;
+	 } while (loop);
+
+	 if (input == '1')
+		 pSess = new Paypal();
+	 else
+		 pSess = new Visa();
+	 //setting order id
+	 pSess->setOrderID(sub);
+	 //capture payment info
+	 CapturePaymentInfo();
+	 return true;
+ }
+
+ void User::CapturePaymentInfo()
+ {
+	 cout << "Please enter Payment Info: " << endl;
+	 string fname, lname, creditNum, secureCode, expDate;
+	 cout << "F Name: ";
+	 cin >> fname;
+	 cout << "L Name: ";
+	 cin >> lname;
+	 cout << "CC#: ";
+	 cin >> creditNum;
+	 cout << "CRV#: ";
+	 cin >> secureCode;
+	 cout << "Exp Date: ";
+	 cin >> expDate;
+
+	 if (pSess->setCreditInfo(fname, lname, creditNum, secureCode, expDate))
+	 {
+		 system("CLS");
+		 pSess->CreateOrder(pSess->getOrderID());
+		 cin.ignore();
+		 if (cin.get() == '\n')
+			 system("CLS");
+	 }
+
+ }
+

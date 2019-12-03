@@ -2,10 +2,18 @@
 #include <string>
 #include <ctime>
 #include <iostream>
-#include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IPaymentServices.h"
+#include <string>
 using namespace std;
 
-class Payment: public IPaymentServices
+struct Credit {
+	string FirstName;
+	string LastName;
+	string creditNum;
+	string expDate;
+	string secureCode;
+};
+
+class Payment
 {
 protected:
 	string Token;
@@ -17,7 +25,8 @@ protected:
 
 public:
 	Payment();
-	~Payment();
+	virtual ~Payment();
+
 	string getOrderID() { return orderID; };
 	void setOrderID(string oID) { orderID = oID; };
 	bool setCreditInfo(string fname, string lname, string creditNum, string secureCode, string expDate);

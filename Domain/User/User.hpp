@@ -8,23 +8,24 @@ class User : public IUser
 		std::string username;
 		std::string password;
 		bool membership;
-		Payment* pSess;
 		Subscription subscription;
 
 	public:
 	  Progress history;
+	  Payment* pSess;
+
 
 	  User();
 	  //previous user
 	  User(string, string);
-		User(const User&);
+	  User(const User&);
 	  ~User();
 	  bool getMembership();
 	  void setMembership(bool);
 	  string getUsername();
 	  void setUsername(string);
 	  void setPassword(string);
-	  Payment getPayment() { return pSess; };
+	  Payment getPayment() { return *pSess; };
 
 	  //void encryptPassword(std::string);
 	  void readProfile();
@@ -36,4 +37,6 @@ class User : public IUser
 	  void changePassword(string newPassword);
 	  bool makePayment();
 	  bool createOrder(string purchaseItemID);
+	  bool setOrderID(string);
+	  void CapturePaymentInfo();
 };

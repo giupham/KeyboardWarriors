@@ -1,5 +1,10 @@
 #include "Paypal.hpp"
 
+Paypal::~Paypal()
+{
+
+}
+
 bool Paypal::CreatePayment() {
 		cout << "Payment Created by Paypal!" << endl;
 		return true;

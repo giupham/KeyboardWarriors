@@ -78,6 +78,12 @@
     <ClInclude Include="..\..\Domain\Test\MemTest.hpp">
       <Filter>Header Files\Domain\Test</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\TechServices\Payment\Visa.hpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">
@@ -112,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Domain\Test\MemTest.cpp">
       <Filter>Header Files\Domain\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TechServices\Payment\Paypal.cpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TechServices\Payment\Visa.cpp">
+      <Filter>Header Files\Technical</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
