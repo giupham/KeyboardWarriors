@@ -6,12 +6,12 @@ User::User()
 	username = "";
 	password = "";
 	membership = false;
-	pSess = Payment();
+	pSess = NULL;
 }
 
 User::~User()
 {
-
+	delete pSess;
 }
 
 //existing user
@@ -112,14 +112,29 @@ string User::getUsername() {
 }
 
 bool User::createOrder(string purchaseItemID) {
-	pSess.setOrderID(pSess.CreateOrder(purchaseItemID));
-	if (pSess.getOrderID() != "") {
+
+	//Choosing Payment program
+	char input; 
+	do{
+	cout << "Please select a payment program \n 1) Paypal \n 2) Visa \n";
+	cin >> input 
+	}while(input == '1' || input == '2');
+	
+	if (input == '1')
+		pSess = new Paypal();
+	else
+		pSess = new Visa();
+
+
+	//making payment
+	pSess->setOrderID(pSess->CreateOrder(purchaseItemID));
+	if (pSess->getOrderID() != "") {
 		bool success = makePayment(pSess);
 		if (success) {
 			setMembership(1);
-			if (pSess.getOrderID() == "1")
+			if (pSess->getOrderID() == "1")
 				cout << "Monthly Subscription Purchased!" << endl;
-			else if (pSess.getOrderID() == "2")
+			else if (pSess->getOrderID() == "2")
 				cout << "Yearly Subscription Purchased!" << endl;
 			cout << "Press 'Enter' to Continue...\n";
 			cin.ignore();
@@ -131,17 +146,17 @@ bool User::createOrder(string purchaseItemID) {
 	return true;
 }
 
-bool User::makePayment(Payment pSess)
+bool User::makePayment()
 {
 	
-	pSess.CreatePayment();
-	pSess.SetPaymentInfo();
-	pSess.AuthorizePaymentInfo();
+	pSess->CreatePayment();
+	pSess->SetPaymentInfo();
+	pSess->AuthorizePaymentInfo();
 	cout << "Confirm purchase by pressing 'Enter'. (Payment not yet completed.)\n";
 	cin.ignore();
 	if (cin.get() == '\n') {
-		pSess.AuthorizePaymentForOrder(pSess.getOrderID());
-		pSess.CapturePaymentForOrder(pSess.getOrderID());
+		pSess->AuthorizePaymentForOrder(pSess->getOrderID());
+		pSess->CapturePaymentForOrder(pSess->getOrderID());
 		return true;
 	}
 	else

@@ -8,7 +8,7 @@ class User : public IUser
 		std::string username;
 		std::string password;
 		bool membership;
-		Payment pSess;
+		Payment* pSess;
 		Subscription subscription;
 
 	public:
@@ -34,6 +34,6 @@ class User : public IUser
 	  vector<string> getOptions();
 	  void viewProgress();
 	  void changePassword(string newPassword);
-	  bool makePayment(Payment pSess);
+	  bool makePayment();
 	  bool createOrder(string purchaseItemID);
 };

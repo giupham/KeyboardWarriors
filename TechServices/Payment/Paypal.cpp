@@ -1,37 +1,51 @@
 #include "Paypal.hpp"
-using namespace std;
 
-Paypal::Paypal() {
-	Token = "";
-	time(&Date);
-	UserID = "";
-	orderID = "";
-	purchaseItemID = "";
+bool Paypal::CreatePayment() {
+		cout << "Payment Created by Paypal!" << endl;
+		return true;
 }
 
-Paypal::~Paypal() {
-
+bool Paypal::SetPaymentInfo() {
+		cout << "Payment Info Set by Paypal!" << endl;
+		return true;
 }
 
-bool Paypal::setCreditInfo(string fname, string lname, string creditNum, string secureCode, string expDate) {
-	creditInfo.FirstName = fname;
-	creditInfo.LastName = lname;
-	creditInfo.creditNum = creditNum;
-	creditInfo.secureCode = secureCode;
-	creditInfo.expDate = expDate;
+bool Paypal::GetPaymentInfo() {
+	cout << "Payment Details gotten by Paypal!" << endl;
 	return true;
 }
 
-bool Paypal::set_purchaseItemID(string pItemID) {
-	purchaseItemID = pItemID;
+bool Paypal::EditPaymentInfo() {
+	cout << "Go to Edit Payment Info by Paypal!" << endl;
 	return true;
 }
 
-bool Paypal::TryPurchaseMonth(string purchaseItemID, Credit cc) {
+bool Paypal::AuthorizePaymentInfo() {
+	cout << "Authorized Payment Info by Paypal!" << endl;
 	return true;
 }
 
-bool Paypal::TryPurchaseYear(string purchaseItemID, Credit cc) {
+string Paypal::CreateOrder(string purchaseItemID) {
+	cout << "Order Created by Paypal!" << endl;
+	return "OrderIDTest";
+}
+
+bool Paypal::UpdateOrder(string orderID) {
+	cout << "Updated Order by Paypal!" << endl;
 	return true;
 }
 
+bool Paypal::GetOrderInfo(string orderID) {
+	cout << "Order Details gotten by Paypal!" << endl;
+	return true;
+}
+
+bool Paypal::AuthorizePaymentForOrder(string orderID) {
+	cout << "Payment Authorized for Order by Paypal!" << endl;
+	return true;
+}
+
+bool Paypal::CapturePaymentForOrder(string orderID) {
+	cout << "Payment Made, Order Submitted by Paypal!" << endl;
+	return true;
+}

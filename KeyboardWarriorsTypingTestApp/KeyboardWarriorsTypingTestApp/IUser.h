@@ -5,6 +5,8 @@
 #include <iostream>
 #include "../../Domain/Test/Progress.hpp"
 #include "../../TechServices/Payment/Payment.hpp"
+#include "../../TechServices/Payment/Paypal.hpp"
+#include "../../TechServices/Payment/Visa.hpp"
 #include "../../TechServices/Payment/Subscription.hpp"
 using namespace std;
 
@@ -14,7 +16,7 @@ private:
 	string username;
 	string password;
 	bool membership;
-	Payment pSess;
+	Payment* pSess;
 	Subscription subscription;
 
 public:
