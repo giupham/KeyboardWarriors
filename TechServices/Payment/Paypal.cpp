@@ -1,13 +1,17 @@
 #include "Paypal.hpp"
 
+Paypal::Paypal() :Payment()
+{
+	log.open(log_path);
+}
+
 Paypal::~Paypal()
 {
 	log.close();
 }
 
 bool Paypal::CreatePayment() {
-		cout << "Payment Created by Paypal!" << endl;
-		log << current_time << endl << "Payment Created by Paypal!" << endl;
+
 		return true;
 }
 
@@ -32,7 +36,10 @@ bool Paypal::AuthorizePaymentInfo() {
 }
 
 string Paypal::CreateOrder(string purchaseItemID) {
-	cout << "Order Created by Paypal!" << endl;
+	cout << orderID << "Order Created by Paypal!" << endl;
+	cout << current_time << endl;
+	log << orderID << "Order Created by Paypal!" << endl;
+	log << current_time << endl;
 	return "OrderIDTest";
 }
 

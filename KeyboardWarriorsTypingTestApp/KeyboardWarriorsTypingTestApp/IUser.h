@@ -29,7 +29,6 @@ public:
 	virtual string getUsername() = 0;
 	virtual void setUsername(string) = 0;
 	virtual void setPassword(string) = 0;
-	virtual Payment getPayment() = 0;
 
 	//void encryptPassword(std::string) = 0;
 	virtual void readProfile() = 0;

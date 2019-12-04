@@ -26,7 +26,6 @@ class User : public IUser
 	  string getUsername();
 	  void setUsername(string);
 	  void setPassword(string);
-	  Payment getPayment() { return *pSess; };
 
 	  //void encryptPassword(std::string);
 	  void readProfile();

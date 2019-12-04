@@ -9,7 +9,7 @@ class Visa: public Payment
 {
 public:
 	//constructor
-	Visa():Payment(){log.open(log_path);};
+	Visa();
 	virtual ~Visa();
 
 	//functions

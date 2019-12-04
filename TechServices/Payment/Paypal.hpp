@@ -10,7 +10,7 @@ class Paypal: public Payment
 
 public:
 	//constructor
-	Paypal() : Payment() {log.open(log_path);};
+	Paypal();
 	virtual ~Paypal();
 
 	//functions
