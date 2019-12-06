@@ -160,18 +160,20 @@
     <ClInclude Include="..\..\Domain\Test\Result.hpp" />
     <ClInclude Include="..\..\Domain\Test\Test.hpp" />
     <ClInclude Include="..\..\Domain\User\User.hpp" />
+    <ClInclude Include="..\..\TechServices\Logging\ILog.hpp" />
+    <ClInclude Include="..\..\TechServices\Logging\Log.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Payment.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Visa.hpp" />
+    <ClInclude Include="..\..\TechServices\Persistence\Log.h" />
+    <ClInclude Include="..\..\TechServices\Persistence\IPersistence.hpp" />
+    <ClInclude Include="..\..\TechServices\Persistence\UserProfile.hpp" />
     <ClInclude Include="..\..\UI\console.hpp" />
     <ClInclude Include="Difficulty.hpp" />
-    <ClInclude Include="ILog.h" />
     <ClInclude Include="IPaymentServices.h" />
     <ClInclude Include="ISession.h" />
-    <ClInclude Include="IUser.h" />
     <ClInclude Include="IUserInterface.h" />
-    <ClInclude Include="Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Domain\Sessions\Session.cpp" />
@@ -181,13 +183,14 @@
     <ClCompile Include="..\..\Domain\Test\Result.cpp" />
     <ClCompile Include="..\..\Domain\Test\Test.cpp" />
     <ClCompile Include="..\..\Domain\User\User.cpp" />
+    <ClCompile Include="..\..\TechServices\Logging\Log.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Payment.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Paypal.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Subscription.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Visa.cpp" />
+    <ClCompile Include="..\..\TechServices\Persistence\UserProfile.cpp" />
     <ClCompile Include="..\..\UI\console.cpp" />
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp" />
-    <ClCompile Include="Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

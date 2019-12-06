@@ -1,12 +1,9 @@
 #pragma once
 #include <string>
-#include <ctime>
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <chrono>
 #include <iomanip>
-#include <filesystem>
 
 
 using namespace std;
@@ -29,8 +26,6 @@ protected:
 	string purchaseItemID;
 	string orderID;
 
-	string current_time;
-	string log_path;
 public:
 	Payment();
 	virtual ~Payment();

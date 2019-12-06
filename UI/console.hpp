@@ -1,5 +1,5 @@
 #pragma once
-#include "../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IUserInterface.h"
+#include "../Domain/User/IUserInterface.h"
 using namespace std;
 
 class ConsoleView: public IUserInterface

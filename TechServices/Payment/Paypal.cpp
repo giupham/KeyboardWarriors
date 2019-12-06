@@ -34,10 +34,9 @@ bool Paypal::AuthorizePaymentInfo() {
 }
 
 string Paypal::CreateOrder(string purchaseItemID) {
-	cout << orderID << "Order Created by Paypal!" << endl;
-	cout << current_time << endl;
-	//Log("Order Created by Paypal!" \n current_time");
-	return "OrderIDTest";
+	cout << orderID << " Order Created by Paypal!" << endl;
+	Log(orderID + " Order Created by Paypal! \n");
+	return orderID;
 }
 
 bool Paypal::UpdateOrder(string orderID) {

@@ -8,6 +8,7 @@
 #include "../../TechServices/Payment/Paypal.hpp"
 #include "../../TechServices/Payment/Visa.hpp"
 #include "../../TechServices/Payment/Subscription.hpp"
+#include "../../TechServices/Persistence/UserProfile.hpp"
 using namespace std;
 
 class IUser
@@ -18,7 +19,7 @@ private:
 	bool membership;
 	Subscription subscription;
 	Payment* pSess;
-
+	UserProfile _profile;
 
 public:
 	Progress history;

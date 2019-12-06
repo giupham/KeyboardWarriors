@@ -1,16 +1,12 @@
 #include "Visa.hpp"
+#include "../Logging/Log.hpp"
+
 Visa::Visa() :Payment()
 {
-	log.open(log_path);
-	if (!log.is_open())
-	{
-		cout << "Not Open" << endl;
-	}
 }
 
 Visa::~Visa()
 {
-	log.close();
 }
 
 bool Visa::CreatePayment() {
@@ -40,10 +36,8 @@ bool Visa::AuthorizePaymentInfo() {
 }
 
 string Visa::CreateOrder(string purchaseItemID) {
-	cout << orderID << "Order Created by Visa!" << endl;
-	cout << current_time << endl;
-	log << orderID << "Order Created by Visa!" << endl;
-	log << current_time << endl;
+	cout << orderID << " Order Created by Visa!" << endl;
+	Log(orderID + " Order Created by Visa! \n");
 	return "OrderIDTest";
 }
 

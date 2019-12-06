@@ -1,6 +1,8 @@
 #pragma once
-#include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IUser.h"
+#include "../User/IUser.h"
 using namespace std;
+
+#define IS_PAYPAL true
 
 class User : public IUser
 {
@@ -10,7 +12,7 @@ class User : public IUser
 		bool membership;
 		Subscription subscription;
 		Payment* pSess;
-
+		UserProfile _profile;
 
 	public:
 	  Progress history;

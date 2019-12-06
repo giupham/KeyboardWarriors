@@ -1,6 +1,4 @@
 #include "User.hpp"
-#include <filesystem>
-//new user
 User::User()
 {
 	username = "";
@@ -26,6 +24,7 @@ User::User(string _username, string _password)
 	{
 		throw ex;
 	}
+	_profile = UserProfile(username);
 	history = Progress(username);
 }
 
@@ -118,10 +117,12 @@ bool User::createOrder(string purchaseItemID) {
 		bool success = makePayment();
 		if (success) {
 			setMembership(1);
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			if (pSess->getOrderID() == "1")
 				cout << "Monthly Subscription Purchased!" << endl;
 			else if (pSess->getOrderID() == "2")
 				cout << "Yearly Subscription Purchased!" << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << "Press 'Enter' to Continue...\n";
 			cin.ignore();
 			if (cin.get() == '\n') {
@@ -151,27 +152,13 @@ bool User::makePayment()
 
 
 void User::setMembership(bool isMember) {
-	membership = isMember;
-	try {
-		profileWrite();
-		subscription.membershipActive = 1;
-	}
-	catch (exception& ex)
-	{
-		cerr << ex.what() << endl;
-	}
+	_profile.update_Membership(isMember);
+	subscription.membershipActive = 1;
 }
 
 void User::changePassword(string new_pw)
 {
-	password = new_pw;
-	try {
-		profileWrite();
-	}
-	catch (exception& ex) {
-		cerr << ex.what() << endl;
-	}
-
+	_profile.change_password(new_pw);
 }
 
 void User::viewProgress()
@@ -199,21 +186,7 @@ void User::viewProgress()
 
  void User::newProfile(string _username, string _password)
  {
-	 string profile_path = "../../TechServices/Persistence/User_Profiles/" + _username + ".txt";
-	 //CHECK IF PROFILE ALREADY EXISTS
-	 if (ifstream(profile_path))
-		 throw invalid_argument("Username already Exists\n");
-	 //CREATING NEW PROFILE
-	 ofstream file;
-	 file.open(profile_path);
-	 if (!file.is_open())
-		 throw invalid_argument("Unable to open: " + profile_path + "\n");
-	 file << "username\\\\" << _username << endl;
-	 file << "password\\\\" << _password << endl;
-	 file << "membership\\\\" << membership << endl;
-	 file << "WPM\\\\0" << endl;
-	 file << "history" << endl;
-	 file.close();
+	 _profile.new_profile(_username, _password);
 
 	 //SETTING THE USERNAME, PASSWORD, AND INITIALIZING THE HISTORY
 	 setUsername(_username);
@@ -221,53 +194,19 @@ void User::viewProgress()
 	 history = Progress(username);
  }
 
- void User::profileWrite()
- {
-	 string profile_path = "../../TechServices/Persistence/User_Profiles/" + username + ".txt";
-	 ifstream input_file(profile_path);
-	 if (!input_file.is_open())
-		 throw invalid_argument("Unable to locate Profile\n");
-	 string input;
-	 vector<string> lines;
-	 while (getline(input_file, input))
-		 lines.push_back(input);
-
-	 for (auto& line : lines)
-	 {
-		 size_t found = line.find("password");
-		 if (found != string::npos)
-			 line = "password\\\\" + password;
-		 found = line.find("membership");
-		 if (found != string::npos)
-		 {
-			 string member = (membership)?"1":"0";
-			 line = "membership\\\\" + member;
-
-		 }
-
-	 }
-	 input_file.close();
-
-	 ofstream output_file(profile_path);
-	 for (auto const& line : lines)
-		 output_file << line << endl;
-	 output_file.close();
-
- }
-
  bool User::setOrderID(string sub)
  {
 	 system("CLS");
-	 char input;
+	 /*char input;
 	 bool loop = true;
 	 do {
 		 cout << "Please select your Payment Program \n 1) Paypal \n 2) Visa \n";
 		 cin >> input;
 		 if (input == '1' || input == '2')
 			 loop = false;
-	 } while (loop);
+	 } while (loop);*/
 
-	 if (input == '1')
+	 if (IS_PAYPAL)
 		 pSess = new Paypal();
 	 else
 		 pSess = new Visa();
@@ -281,7 +220,9 @@ void User::viewProgress()
  void User::CapturePaymentInfo()
  {
 	 system("CLS");
+	 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 	 cout << "Please enter Payment Info: " << endl;
+	 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	 string fname, lname, creditNum, secureCode, expDate;
 	 cout << "F Name: ";
 	 cin >> fname;

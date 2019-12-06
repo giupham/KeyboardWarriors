@@ -2,6 +2,7 @@
 #include <string>
 #include <ctime>
 #include <iostream>
+#include "../../TechServices/Logging/Log.hpp"
 #include "Payment.hpp"
 using namespace std;
 

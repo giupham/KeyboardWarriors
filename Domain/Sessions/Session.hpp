@@ -1,7 +1,7 @@
 #pragma once
 #ifndef Session_H
 #define Session_H
-#include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/ISession.h"
+#include "../Sessions/ISession.h"
 #include <string>
 #include <iostream>
 

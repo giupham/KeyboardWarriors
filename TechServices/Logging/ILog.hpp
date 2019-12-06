@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <stdio.h>
+#include <iostream>
 #include <fstream>
 #include <ctime>
 #include <chrono>
@@ -8,7 +8,8 @@
 using namespace std;
 
 class ILog {
+private:
+	string log_path;
 public:
-	//virtual string log_path() = 0;
-	virtual string file_name() = 0;
+	virtual string current_time() = 0;
 };
