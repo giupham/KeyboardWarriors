@@ -166,10 +166,12 @@
     <ClInclude Include="..\..\TechServices\Payment\Visa.hpp" />
     <ClInclude Include="..\..\UI\console.hpp" />
     <ClInclude Include="Difficulty.hpp" />
+    <ClInclude Include="ILog.h" />
     <ClInclude Include="IPaymentServices.h" />
     <ClInclude Include="ISession.h" />
     <ClInclude Include="IUser.h" />
     <ClInclude Include="IUserInterface.h" />
+    <ClInclude Include="Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Domain\Sessions\Session.cpp" />
@@ -185,6 +187,7 @@
     <ClCompile Include="..\..\TechServices\Payment\Visa.cpp" />
     <ClCompile Include="..\..\UI\console.cpp" />
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp" />
+    <ClCompile Include="Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

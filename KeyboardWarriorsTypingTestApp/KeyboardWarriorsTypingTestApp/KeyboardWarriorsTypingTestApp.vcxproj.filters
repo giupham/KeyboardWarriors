@@ -84,6 +84,12 @@
     <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
+    <ClInclude Include="ILog.h">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">
@@ -123,6 +129,9 @@
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
     <ClCompile Include="..\..\TechServices\Payment\Visa.cpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
   </ItemGroup>

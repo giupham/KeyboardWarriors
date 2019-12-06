@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Log.h"
 using namespace std;
 
 class IPaymentServices
@@ -15,5 +16,6 @@ public:
 	virtual bool GetOrderInfo(string orderID) = 0;
 	virtual bool AuthorizePaymentForOrder(string orderID) = 0;
 	virtual bool CapturePaymentForOrder(string orderID) = 0;
+	virtual void LogErr(string msg) = 0;
 };
 

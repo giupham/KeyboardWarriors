@@ -7,7 +7,6 @@ using namespace std;
 
 class Paypal: public Payment
 {
-
 public:
 	//constructor
 	Paypal();
@@ -24,4 +23,5 @@ public:
 	bool GetOrderInfo(string orderID);
 	bool AuthorizePaymentForOrder(string orderID);
 	bool CapturePaymentForOrder(string orderID);
+	void LogErr(string msg);
 };

@@ -31,7 +31,6 @@ protected:
 
 	string current_time;
 	string log_path;
-	ofstream log; 
 public:
 	Payment();
 	virtual ~Payment();

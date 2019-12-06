@@ -66,13 +66,13 @@ void ConsoleView::changePassword() {
 		sess.SessionUser.changePassword(pw);
 		system("CLS");
 		cout << "Password Changed!" << endl;
-		Sleep(2000);
+		Sleep(1250);
 		system("CLS");
 	}
 	else
 	{
 		cout << "New Password does not match Re-entered Password.\n";
-		Sleep(3000);
+		Sleep(1250);
 		system("CLS");
 		changePassword();
 	}
