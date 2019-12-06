@@ -12,8 +12,11 @@ char FreeTest::displayOptions()
   bool loop = true;
   do
   {
-    cout << "Please select test type: \n 1) EASY \n 2) MEDIUM \n 3) HARD \n";
-    cin >> input;
+	  SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	  cout << "Please select test type:" << endl;
+	  SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	  cout << "1) EASY \n 2) MEDIUM \n 3) HARD \n" << endl;
+	  cin >> input;
     if(input == '1' || input == '2' || input == '3')
 		loop = false;
   }while(loop);

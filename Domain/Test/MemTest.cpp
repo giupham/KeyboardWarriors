@@ -12,7 +12,10 @@ char MemTest::displayOptions()
   bool loop = true;
   do
   {
-    cout << "Please select test type: \n 1) EASY \n 2) MEDIUM \n 3) HARD \n 4) PYTHON \n 5) CSS \n 6) CPP \n";
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cout << "Please select test type:" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	cout << " 1) EASY \n 2) MEDIUM \n 3) HARD \n 4) PYTHON \n 5) CSS \n 6) CPP \n";
     cin >> input;
     if(input == '1' || input == '2' || input == '3' || input == '4' || input == '5' || input == '6')
 		loop = false;

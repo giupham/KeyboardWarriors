@@ -191,8 +191,9 @@ void User::viewProgress()
  	vector<string> options;
 	options.push_back("1) Request Typing Test");
  	options.push_back("2) View Personal Progress");
-	options.push_back("3) Make Payment");
-	options.push_back("4) Logout");
+	options.push_back("3) Purchase Subscription");
+	options.push_back("4) Change Password");
+	options.push_back("5) Logout");
 	return options;
  }
 

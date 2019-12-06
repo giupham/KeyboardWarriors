@@ -28,10 +28,11 @@ void ConsoleView::displayOptions() {
 
 void ConsoleView::displayLoginOptions() {
 	string input;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 	cout << "Welcome. Are you an existing user or new user?" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	cout << "1) Existing User" << endl;
 	cout << "2) New User" << endl;
-	cout << "3) Change Password" << endl;
 	cin >> input;
 	system("CLS");
 
@@ -41,9 +42,6 @@ void ConsoleView::displayLoginOptions() {
 	}
 	if (input == "2") {
 		createNewUser();
-	}
-	if (input == "3") {
-		changePassword();
 	}
 }
 
@@ -73,9 +71,11 @@ void ConsoleView::changePassword() {
 	}
 	else
 	{
-		cout << "New Password does not match Re-entered Password.\n"; 
+		cout << "New Password does not match Re-entered Password.\n";
+		Sleep(3000);
+		system("CLS");
+		changePassword();
 	}
-	
 }
 
 void ConsoleView::createNewUser() {
@@ -104,8 +104,8 @@ void ConsoleView::authenticateUser() {
 			sess.authenticated = true;
 		}
 		catch (exception & ex) {
-			cerr << ex.what() << endl;
-			cerr << "Please try again.\n";
+			cerr << ex.what();
+			cerr << "Please try again.\n\n";
 		}
 	}
 }
@@ -127,7 +127,10 @@ void ConsoleView::displayChoices()
 		else if (input == '3') {
 			displayPurchaseOptions();
 		}
-		else if (input == '4')
+		else if (input == '4') {
+			changePassword();
+		}
+		else if (input == '5')
 			exit_system = true;
 	} while (!exit_system);
 }
@@ -135,7 +138,9 @@ void ConsoleView::displayChoices()
 void ConsoleView::displayPurchaseOptions() {
 	string input = "";
 	system("CLS");
-	cout << "Select Purchase Item: Please type the Selection ID and press 'Enter'" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cout << "Please select subscription to purchase: " << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	cout << "1) Monthly Subscription " << endl;
 	cout << "2) Yearly Subscription " << endl;
 	cin >> input;

@@ -19,7 +19,9 @@ Progress::Progress(string _id)
 	if (!read_profile())
 		throw invalid_argument("Profile does not exist in database.\n");
 	else
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		cout << "Welcome Back, " << username << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 }
 
 Progress::~Progress()
@@ -159,7 +161,9 @@ void Progress::print_results()
 {
 	system("CLS");
 	map<string, Result>::iterator it = Results.begin();
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 	cout << "-----------------------------Results History-----------------------------" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	while (it != Results.end())
 	{
 		cout << "Session ID: " << it->first << '\t' << "WPM: " << it->second.getWPM() << endl << endl;
