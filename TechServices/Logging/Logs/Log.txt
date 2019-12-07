@@ -1,0 +1,13 @@
+12-6-2019__23-6-53	Can't determine member. Value -> 
+
+12-6-2019__23-6-59	Monthly Order Created by Paypal!
+
+12-6-2019__23-6-59	Payment Info Set by Paypal!
+
+12-6-2019__23-6-59	Authorized Payment Info by Paypal!
+
+12-6-2019__23-7-6	Payment Authorized for Order by Paypal!
+
+12-6-2019__23-7-6	Payment Made, Order Submitted by Paypal!
+
+12-6-2019__23-7-7	Monthly Subscription Purchased!
