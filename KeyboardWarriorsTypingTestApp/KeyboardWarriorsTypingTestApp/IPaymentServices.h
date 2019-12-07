@@ -16,6 +16,5 @@ public:
 	virtual bool GetOrderInfo(string orderID) = 0;
 	virtual bool AuthorizePaymentForOrder(string orderID) = 0;
 	virtual bool CapturePaymentForOrder(string orderID) = 0;
-	virtual void LogErr(string msg) = 0;
 };
 

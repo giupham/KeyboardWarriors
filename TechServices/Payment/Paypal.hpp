@@ -24,5 +24,4 @@ public:
 	bool GetOrderInfo(string orderID);
 	bool AuthorizePaymentForOrder(string orderID);
 	bool CapturePaymentForOrder(string orderID);
-	void LogErr(string msg);
 };

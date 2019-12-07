@@ -69,7 +69,7 @@ void ConsoleView::changePassword() {
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
 		cout << "Password Changed!" << endl;
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		Sleep(1250);
+		Sleep(1000);
 		system("CLS");
 	}
 	else

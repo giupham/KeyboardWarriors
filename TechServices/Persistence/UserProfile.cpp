@@ -116,10 +116,7 @@ bool UserProfile::update_Membership(bool membership)
 		write_profile << line << endl;
 	write_profile.close();
 
-	cout << "Successfully change membership\n";
-	cin.ignore();
-	if (cin.get() == '\n')
-		system("CLS");
+	cout << "Successfully changed membership.\n";
 	return true;
 }
 

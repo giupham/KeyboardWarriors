@@ -1,6 +1,6 @@
 username\\g
-password\\2
-membership\\0
+password\\1
+embership\\
 WPM\\2
 history
 1\\0

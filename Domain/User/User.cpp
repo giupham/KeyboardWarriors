@@ -77,7 +77,7 @@ void User::readProfile()
 			else if (is_member == "0")
 				_membership = false;
 			else
-				throw invalid_argument("Can't determine member. Value -> " + is_member + "\n");
+				Log("Can't determine member. Value -> " + is_member + "\n");
 			//changes the membership if needed
 			membership = _membership;
 		}
@@ -117,16 +117,11 @@ bool User::createOrder(string purchaseItemID) {
 		if (makePayment()) {
 			setMembership(1);
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-			if (pSess->getOrderID() == "1")
-				cout << "!!Monthly Subscription Purchased!" << endl;
-			else if (pSess->getOrderID() == "2")
-				cout << "!!Yearly Subscription Purchased!" << endl;
+			if (pSess->getOrderID() == "Monthly")
+				Log("Monthly Subscription Purchased!");
+			else if (pSess->getOrderID() == "Yearly")
+				Log("Yearly Subscription Purchased!");
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-			cout << "Press 'Enter' to Continue...\n";
-			cin.ignore();
-			if (cin.get() == '\n') {
-				return true;
-			}
 		}
 	}
 	return true;
@@ -152,6 +147,7 @@ bool User::makePayment()
 
 void User::setMembership(bool isMember) {
 	_profile.update_Membership(isMember);
+	Sleep(1000);
 	subscription.membershipActive = 1;
 }
 
@@ -210,7 +206,6 @@ bool User::setOrderID(string sub)
 	pSess->setOrderID(sub);
 	//capture payment info
 	CapturePaymentInfo();
-	makePayment();
 	return true;
 }
 
@@ -236,11 +231,7 @@ void User::CapturePaymentInfo()
 	{
 		system("CLS");
 		createOrder(pSess->getOrderID());
-		cin.ignore();
-		if (cin.get() == '\n')
-			system("CLS");
 	}
-
 }
 
 bool User::updateHistory(int avg_WPM, int new_WPM, string sessionID)
