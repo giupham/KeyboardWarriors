@@ -9,7 +9,7 @@ ConsoleView::ConsoleView() {
 	*/
 }
 
-ConsoleView::~ConsoleView(){
+ConsoleView::~ConsoleView() {
 
 }
 
@@ -60,7 +60,7 @@ void ConsoleView::changePassword() {
 	cout << "New Password: ";
 	cin >> pw;
 	cout << "Confirm Password: ";
-	cin >> pw_copy; 
+	cin >> pw_copy;
 	if (pw == pw_copy)
 	{
 		sess.SessionUser.changePassword(pw);
@@ -150,4 +150,3 @@ void ConsoleView::displayPurchaseOptions() {
 		sess.SessionUser.setOrderID("Yearly");
 	system("CLS");
 }
-

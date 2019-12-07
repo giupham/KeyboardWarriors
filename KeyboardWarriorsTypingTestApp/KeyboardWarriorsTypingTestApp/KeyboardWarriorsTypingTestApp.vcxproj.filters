@@ -84,10 +84,10 @@
     <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
-    <ClInclude Include="ILog.h">
+    <ClInclude Include="..\..\TechServices\Logging\ILog.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
-    <ClInclude Include="Log.h">
+    <ClInclude Include="..\..\TechServices\Logging\Log.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
   </ItemGroup>
@@ -131,7 +131,7 @@
     <ClCompile Include="..\..\TechServices\Payment\Visa.cpp">
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
+    <ClCompile Include="..\..\TechServices\Logging\Log.cpp">
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
   </ItemGroup>

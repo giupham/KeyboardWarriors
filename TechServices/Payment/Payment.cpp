@@ -9,31 +9,6 @@ Payment::Payment() {
 	orderID = "";
 	purchaseItemID = "";
 
-
-	
-	time_t rawtime;
-	tm now;
-	time(&rawtime);
-	localtime_s(&now, &rawtime);
-
-
-	/*time_t clock = time(0);
-	tm* now = localtime(&clock);
-	*/
-	current_time = to_string(now.tm_mon+1) + "-" 
-				+ to_string(now.tm_mday) + "-" 
-				+ to_string(now.tm_year + 1900) + "__"
-				+ to_string(now.tm_hour) + "-"
-				+ to_string(now.tm_min) + "-"
-				+ to_string(now.tm_sec);
-	
-	cout << current_time << endl;
-
-	log_path = "../Logging/" + current_time + ".txt";
-
-
-	cout << log_path << endl;
-
 }
 
 Payment::~Payment() {
@@ -67,8 +42,8 @@ bool Payment::SetPaymentInfo() { return true; }
 bool Payment::GetPaymentInfo() { return true; }
 bool Payment::EditPaymentInfo() { return true; }
 bool Payment::AuthorizePaymentInfo() { return true; }
-string Payment::CreateOrder(string purchaseItemID) 
-{ 
+string Payment::CreateOrder(string purchaseItemID)
+{
 	CreatePayment();
 	return "true";
 }

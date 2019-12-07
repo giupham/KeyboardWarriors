@@ -2,10 +2,11 @@
 #include <string>
 #include <ctime>
 #include <iostream>
+#include "../../TechServices/Logging/Log.hpp"
 #include "Payment.hpp"
 using namespace std;
 
-class Paypal: public Payment
+class Paypal : public Payment
 {
 public:
 	//constructor
@@ -15,7 +16,7 @@ public:
 	//functions
 	bool CreatePayment();
 	bool SetPaymentInfo();
-	bool GetPaymentInfo() ;
+	bool GetPaymentInfo();
 	bool EditPaymentInfo();
 	bool AuthorizePaymentInfo();
 	string CreateOrder(string purchaseItemID);

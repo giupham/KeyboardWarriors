@@ -10,12 +10,12 @@ Paypal::~Paypal()
 
 bool Paypal::CreatePayment() {
 
-		return true;
+	return true;
 }
 
 bool Paypal::SetPaymentInfo() {
-		cout << "Payment Info Set by Paypal!" << endl;
-		return true;
+	cout << "Payment Info Set by Paypal!" << endl;
+	return true;
 }
 
 bool Paypal::GetPaymentInfo() {
@@ -34,10 +34,9 @@ bool Paypal::AuthorizePaymentInfo() {
 }
 
 string Paypal::CreateOrder(string purchaseItemID) {
-	cout << orderID << "Order Created by Paypal!" << endl;
-	cout << current_time << endl;
-	//Log("Order Created by Paypal!" \n current_time");
-	return "OrderIDTest";
+	cout << orderID << " Order Created by Paypal!" << endl;
+	Log(orderID + " Order Created by Paypal! \n");
+	return orderID;
 }
 
 bool Paypal::UpdateOrder(string orderID) {
