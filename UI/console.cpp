@@ -3,9 +3,6 @@
 
 ConsoleView::ConsoleView() {
 	sess = Session();
-	//// run new test files through here
-	//sess.TypingTest.title = "CPP2.txt";
-	//sess.TypingTest.reformatFileContentForWindowsChars("../../TypingTests/" + sess.TypingTest.title);
 }
 
 ConsoleView::~ConsoleView() {

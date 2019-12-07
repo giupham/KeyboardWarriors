@@ -113,6 +113,7 @@ bool User::createOrder(string purchaseItemID) {
 			else if (pSess->getOrderID() == "Yearly")
 				Log("Yearly Subscription Purchased!");
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+			Sleep(1000);
 		}
 	}
 	return true;

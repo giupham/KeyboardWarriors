@@ -7,10 +7,6 @@ Session::Session()
 	date = "";
 	SessionID = "";
 	TypingTest = NULL;
-	/*
-	TypingTest.setPath("../../TypingTests/CSS.txt");
-	TypingTest.reformatFileContentForWindowsChars(TypingTest.getPath());
-	*/
 }
 
 Session::~Session()

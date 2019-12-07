@@ -35,7 +35,6 @@ class Test
 	  bool calculateWPM(string filename, double duration, string inputContent);
 	  void viewResults(Result);
 	  int getTestWordCount(string filename);
-	  void reformatFileContentForWindowsChars(string filepath);
 
 
 	  string getPath() {
