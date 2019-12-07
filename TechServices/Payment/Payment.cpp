@@ -42,11 +42,13 @@ bool Payment::SetPaymentInfo() { return true; }
 bool Payment::GetPaymentInfo() { return true; }
 bool Payment::EditPaymentInfo() { return true; }
 bool Payment::AuthorizePaymentInfo() { return true; }
+
 string Payment::CreateOrder(string purchaseItemID)
 {
 	CreatePayment();
 	return "true";
 }
+
 bool Payment::UpdateOrder(string orderID) { return true; }
 bool Payment::GetOrderInfo(string orderID) { return true; }
 bool Payment::AuthorizePaymentForOrder(string orderID) { return true; }

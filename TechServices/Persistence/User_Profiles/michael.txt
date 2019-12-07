@@ -1,6 +1,6 @@
 username\\michael
 password\\li
-membership\\1
+embership\\
 WPM\\0.000000
 history
 

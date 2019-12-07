@@ -12,16 +12,15 @@ class User : public IUser
 		bool membership;
 		Subscription subscription;
 		Payment* pSess;
-
+		UserProfile _profile;
 
 	public:
 	  Progress history;
 
-
 	  User();
 	  //previous user
 	  User(string, string);
-	  User(const User&);
+	  //User(const User&);
 	  ~User();
 	  bool getMembership();
 	  void setMembership(bool);
@@ -32,7 +31,7 @@ class User : public IUser
 	  //void encryptPassword(std::string);
 	  void readProfile();
 	  void newProfile(string username, string password);
-	  void profileWrite();
+	  //void profileWrite();
 
 	  vector<string> getOptions();
 	  void viewProgress();
@@ -41,4 +40,6 @@ class User : public IUser
 	  bool createOrder(string purchaseItemID);
 	  bool setOrderID(string);
 	  void CapturePaymentInfo();
+
+	  bool updateHistory(int, int, string);
 };

@@ -4,6 +4,7 @@
 #include <iostream>
 #include "../../UI/console.hpp"
 
+
 int main()
 {
 	ConsoleView view = ConsoleView();

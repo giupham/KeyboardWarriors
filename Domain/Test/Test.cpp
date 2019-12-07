@@ -46,11 +46,26 @@ void Test::fillTestTypes()
 	hard.push_back("GrimmsBlueLight6.txt");
 	hard.push_back("YelllowWallpaper3.txt");
 
+	for (int i = 0; i < 6; i++)
+	{
+		reformatFileContentForWindowsChars("../../TechServices/Persistence/TypingTests/" + easy[i]);
+		reformatFileContentForWindowsChars("../../TechServices/Persistence/TypingTests/" + medium[i]);
+		reformatFileContentForWindowsChars("../../TechServices/Persistence/TypingTests/" + hard[i]);
+	}
+	
+
 	for (int i = 1; i <= 3; i++)
 	{
 		css.push_back("CSS" + to_string(i) + ".txt");
 		python.push_back("PY" + to_string(i) + ".txt");
 		cpp.push_back("CPP" + to_string(i) + ".txt");
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		reformatFileContentForWindowsChars("../../TechServices/Persistence/TypingTests/" + css[i]);
+		reformatFileContentForWindowsChars("../../TechServices/Persistence/TypingTests/" + python[i]);
+		reformatFileContentForWindowsChars("../../TechServices/Persistence/TypingTests/" + cpp[i]);
 	}
 
 	test_types["easy"] = easy;
@@ -187,9 +202,12 @@ bool Test::calculateWPM(string path, double duration, string inputContent) {
 
 void Test::viewResults(Result r) {
 	system("CLS");
-	cout << "Your WPM: " << r.getWPM() << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cout << "Your WPM: ";
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15); 
+	cout << r.getWPM() << endl;
 	cout << endl;
-	Sleep(4000);
+	Sleep(1250);
 	system("CLS");
 }
 

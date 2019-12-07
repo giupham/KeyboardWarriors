@@ -18,10 +18,6 @@ Progress::Progress(string _id)
 	profile_path = "../../TechServices/Persistence/User_Profiles/" + username + ".txt";
 	if (!read_profile())
 		throw invalid_argument("Profile does not exist in database.\n");
-	else
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-		cout << "Welcome Back, " << username << endl;
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 }
 
 Progress::~Progress()
@@ -109,53 +105,23 @@ float Progress::getAverageWPM()
 	return WPM;
 }
 
-void Progress::updateResults(string session_ID, Result res)
+void Progress::updateResults(string session_ID, Result res, int& avg_WPM, int& new_WPM)
 {
 	number_of_sessions += 1;
 	Results[session_ID] = res;
 	total_WPM += res.getWPM();
 	WPM = total_WPM / number_of_sessions;
-	try {
-		updateUserProfile(session_ID);
-	}
-	catch (exception& ex)
-	{
-		cerr << ex.what() << endl;
-	}
+	
+	avg_WPM = WPM;
+	new_WPM = Results[session_ID].getWPM();
 }
 
 
-void Progress::updateUserProfile(string session_ID)
-{
-
-	ifstream input_file(profile_path);
-	if (!input_file.is_open())
-		throw invalid_argument("Unable to locate Profile\n");
-	string input;
-	vector<string> lines;
-	while (getline(input_file, input))
-		lines.push_back(input);
-
-	for (auto& line : lines)
-	{
-
-		size_t found = line.find("WPM");
-		if (found != string::npos)
-		{
-			line = "WPM\\\\" + to_string(WPM);
-		}
-	}
-	input_file.close();
-	//ADDING NEW RESULT INTO PROFILE
-	string new_session = session_ID + "\\\\" + to_string(Results[session_ID].getWPM());
-	lines.push_back(new_session);
-
-	//PUTTING CHANGES BACK INTO THE PROFILE TXT
-	ofstream output_file(profile_path);
-	for (auto const& line : lines)
-		output_file << line << endl;
-	output_file.close();
-}
+//void Progress::updateUserProfile(string session_ID, int& avg_WPM, int& new_WPM)
+//{
+//	avg_WPM = WPM; //average
+//	new_WPM = Results[session_ID].getWPM();
+//}
 
 void Progress::print_results()
 {
