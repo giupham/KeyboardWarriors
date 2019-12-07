@@ -37,10 +37,7 @@ bool UserProfile::new_profile(string username, string password)
 	write_profile << "history" << endl;
 	write_profile.close();
 
-	cout << "Successfully created new profile for " << username << endl;
-	cin.ignore();
-	if (cin.get() == '\n')
-		system("CLS");
+	cout << "Successfully created new profile for " << username << "." << endl;
 	return true;
 }
 
@@ -104,7 +101,7 @@ bool UserProfile::update_Membership(bool membership)
 		if (found != string::npos)
 		{
 			string member = (membership) ? "1" : "0";
-			line = "membership\\\\" + membership;
+			line = "membership\\\\" + member;
 		}
 	}
 	read_profile.close();
@@ -116,7 +113,6 @@ bool UserProfile::update_Membership(bool membership)
 		write_profile << line << endl;
 	write_profile.close();
 
-	cout << "Successfully changed membership.\n";
 	return true;
 }
 

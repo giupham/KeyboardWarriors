@@ -28,15 +28,6 @@ User::User(string _username, string _password)
 	history = Progress(username);
 }
 
-//// copy constructor
-//User::User(const User& obj)
-//{
-//	username = obj.username;
-//	password = obj.password;
-//	membership = obj.membership;
-//	history = Progress(username);
-//}
-
 void User::readProfile()
 {
 	string profile_path = "../../TechServices/Persistence/User_Profiles/" + username + ".txt";
@@ -133,7 +124,7 @@ bool User::makePayment()
 	pSess->CreatePayment();
 	pSess->SetPaymentInfo();
 	pSess->AuthorizePaymentInfo();
-	cout << "Confirm purchase by pressing 'Enter'. (Payment not yet completed.)\n";
+	cout << "Confirm purchase by pressing 'Enter'. (Payment not yet completed.)";
 	cin.ignore();
 	if (cin.get() == '\n') {
 		pSess->AuthorizePaymentForOrder(pSess->getOrderID());
@@ -187,11 +178,12 @@ void User::newProfile(string _username, string _password)
 	_profile = UserProfile(_username);
 	if(!_profile.new_profile(_username, _password))
 		throw invalid_argument("Error creating the file\n");
-
 	//SETTING THE USERNAME, PASSWORD, AND INITIALIZING THE HISTORY
 	setUsername(_username);
 	setPassword(_password);
 	history = Progress(username);
+	Sleep(1000);
+	system("CLS");
 }
 
 bool User::setOrderID(string sub)

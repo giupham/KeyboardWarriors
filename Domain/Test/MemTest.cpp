@@ -15,7 +15,7 @@ char MemTest::displayOptions()
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 	cout << "Please select test type:" << endl;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-	cout << " 1) EASY \n2) MEDIUM \n3) HARD \n4) PYTHON \n5) CSS \n6) CPP \n";
+	cout << "1) EASY \n2) MEDIUM \n3) HARD \n4) PYTHON \n5) CSS \n6) CPP \n";
     cin >> input;
     if(input == '1' || input == '2' || input == '3' || input == '4' || input == '5' || input == '6')
 		loop = false;

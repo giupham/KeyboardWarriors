@@ -11,3 +11,27 @@
 12-6-2019__23-7-6	Payment Made, Order Submitted by Paypal!
 
 12-6-2019__23-7-7	Monthly Subscription Purchased!
+12-6-2019__23-12-38	Can't determine member. Value -> 
+
+12-6-2019__23-12-43	Monthly Order Created by Paypal!
+
+12-6-2019__23-12-43	Payment Info Set by Paypal!
+
+12-6-2019__23-12-43	Authorized Payment Info by Paypal!
+
+12-6-2019__23-12-44	Payment Authorized for Order by Paypal!
+
+12-6-2019__23-12-44	Payment Made, Order Submitted by Paypal!
+
+12-6-2019__23-12-45	Monthly Subscription Purchased!
+12-6-2019__23-52-51	Monthly Order Created by Paypal!
+
+12-6-2019__23-52-51	Payment Info Set by Paypal!
+
+12-6-2019__23-52-51	Authorized Payment Info by Paypal!
+
+12-6-2019__23-52-52	Payment Authorized for Order by Paypal!
+
+12-6-2019__23-52-52	Payment Made, Order Submitted by Paypal!
+
+12-6-2019__23-54-17	Monthly Subscription Purchased!
