@@ -1,5 +1,4 @@
 #include "User.hpp"
-#include <filesystem>
 //new user
 User::User()
 {
@@ -118,10 +117,12 @@ bool User::createOrder(string purchaseItemID) {
 		bool success = makePayment();
 		if (success) {
 			setMembership(1);
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 			if (pSess->getOrderID() == "1")
 				cout << "Monthly Subscription Purchased!" << endl;
 			else if (pSess->getOrderID() == "2")
 				cout << "Yearly Subscription Purchased!" << endl;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 			cout << "Press 'Enter' to Continue...\n";
 			cin.ignore();
 			if (cin.get() == '\n') {
@@ -258,16 +259,16 @@ void User::viewProgress()
  bool User::setOrderID(string sub)
  {
 	 system("CLS");
-	 char input;
+	 /*char input;
 	 bool loop = true;
 	 do {
 		 cout << "Please select your Payment Program \n 1) Paypal \n 2) Visa \n";
 		 cin >> input;
 		 if (input == '1' || input == '2')
 			 loop = false;
-	 } while (loop);
+	 } while (loop);*/
 
-	 if (input == '1')
+	 if (IS_PAYPAL)
 		 pSess = new Paypal();
 	 else
 		 pSess = new Visa();
@@ -281,7 +282,9 @@ void User::viewProgress()
  void User::CapturePaymentInfo()
  {
 	 system("CLS");
+	 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 	 cout << "Please enter Payment Info: " << endl;
+	 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	 string fname, lname, creditNum, secureCode, expDate;
 	 cout << "F Name: ";
 	 cin >> fname;
@@ -302,6 +305,7 @@ void User::viewProgress()
 		 if (cin.get() == '\n')
 			 system("CLS");
 	 }
+
 
  }
 

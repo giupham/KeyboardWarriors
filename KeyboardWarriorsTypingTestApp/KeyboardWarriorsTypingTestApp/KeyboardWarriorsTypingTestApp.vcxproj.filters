@@ -90,6 +90,12 @@
     <ClInclude Include="..\..\TechServices\Logging\Log.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\TechServices\Persistence\IPersistence.hpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TechServices\Persistence\UserProfile.hpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp">
@@ -132,6 +138,9 @@
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
     <ClCompile Include="..\..\TechServices\Logging\Log.cpp">
+      <Filter>Header Files\Technical</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TechServices\Persistence\UserProfile.cpp">
       <Filter>Header Files\Technical</Filter>
     </ClCompile>
   </ItemGroup>

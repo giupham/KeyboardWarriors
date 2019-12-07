@@ -166,6 +166,8 @@
     <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Visa.hpp" />
+    <ClInclude Include="..\..\TechServices\Persistence\IPersistence.hpp" />
+    <ClInclude Include="..\..\TechServices\Persistence\UserProfile.hpp" />
     <ClInclude Include="..\..\UI\console.hpp" />
     <ClInclude Include="Difficulty.hpp" />
     <ClInclude Include="IPaymentServices.h" />
@@ -186,6 +188,7 @@
     <ClCompile Include="..\..\TechServices\Payment\Paypal.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Subscription.cpp" />
     <ClCompile Include="..\..\TechServices\Payment\Visa.cpp" />
+    <ClCompile Include="..\..\TechServices\Persistence\UserProfile.cpp" />
     <ClCompile Include="..\..\UI\console.cpp" />
     <ClCompile Include="KeyboardWarriorsTypingTestApp.cpp" />
   </ItemGroup>

@@ -2,6 +2,8 @@
 #include "../../KeyboardWarriorsTypingTestApp/KeyboardWarriorsTypingTestApp/IUser.h"
 using namespace std;
 
+#define IS_PAYPAL true
+
 class User : public IUser
 {
 	private:
