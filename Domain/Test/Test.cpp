@@ -203,17 +203,3 @@ int Test::getTestWordCount(string path) {
 	return count;
 }
 
-void Test::reformatFileContentForWindowsChars(string filename) {
-	ifstream readFrom("../../TechServices/Persistence/TypingTests/" + filename);
-	ofstream writeTo("../../TechServices/Persistence/TypingTests/NEW" + filename);
-	string currLine = "";
-	string content = "";
-	if (readFrom.is_open()) {
-		while (getline(readFrom, currLine)) {
-			content = currLine + '\n';
-			writeTo << content;
-		}
-	}
-	readFrom.close();
-	writeTo.close();
-}
