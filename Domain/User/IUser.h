@@ -19,7 +19,6 @@ private:
 	bool membership;
 	Subscription subscription;
 	Payment* pSess;
-	UserProfile _profile;
 
 public:
 	Progress history;
@@ -34,7 +33,7 @@ public:
 	//void encryptPassword(std::string) = 0;
 	virtual void readProfile() = 0;
 	virtual void newProfile(string username, string password) = 0;
-	virtual void profileWrite() = 0;
+	//virtual void profileWrite() = 0;
 
 	virtual vector<string> getOptions() = 0;
 	virtual void viewProgress() = 0;

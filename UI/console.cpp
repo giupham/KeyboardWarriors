@@ -3,13 +3,9 @@
 
 ConsoleView::ConsoleView() {
 	sess = Session();
-	/*// run new test files through here
-	sess.TypingTest.title = "CPP2.txt";
-	sess.TypingTest.reformatFileContentForWindowsChars("../../TypingTests/" + sess.TypingTest.title);
-	*/
 }
 
-ConsoleView::~ConsoleView(){
+ConsoleView::~ConsoleView() {
 
 }
 
@@ -19,7 +15,9 @@ void ConsoleView::displayOptions() {
 	do
 	{
 		sess.StartSession();
-		cout << "\nPress q to Quit \nPress y to continue \n";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+		cout << "Press q to Return to Main Menu \nPress y to begin another test. \n";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cin >> input;
 		if (input == 'q')
 			loop = false;
@@ -60,19 +58,23 @@ void ConsoleView::changePassword() {
 	cout << "New Password: ";
 	cin >> pw;
 	cout << "Confirm Password: ";
-	cin >> pw_copy; 
+	cin >> pw_copy;
 	if (pw == pw_copy)
 	{
 		sess.SessionUser.changePassword(pw);
 		system("CLS");
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
 		cout << "Password Changed!" << endl;
-		Sleep(1250);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		Sleep(1000);
 		system("CLS");
 	}
 	else
 	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
 		cout << "New Password does not match Re-entered Password.\n";
-		Sleep(1250);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		Sleep(1500);
 		system("CLS");
 		changePassword();
 	}
@@ -120,8 +122,9 @@ void ConsoleView::displayChoices()
 			cout << line << endl;
 		cin >> input;
 		system("CLS");
-		if (input == '1')
+		if (input == '1') {
 			displayOptions();
+		}
 		else if (input == '2')
 			sess.SessionUser.viewProgress();
 		else if (input == '3') {
@@ -132,6 +135,7 @@ void ConsoleView::displayChoices()
 		}
 		else if (input == '5')
 			exit_system = true;
+		system("CLS");
 	} while (!exit_system);
 }
 
@@ -150,4 +154,3 @@ void ConsoleView::displayPurchaseOptions() {
 		sess.SessionUser.setOrderID("Yearly");
 	system("CLS");
 }
-

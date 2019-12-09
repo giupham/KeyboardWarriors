@@ -20,20 +20,11 @@ User::User(string _username, string _password)
 	try {
 		readProfile();
 	}
-	catch (exception& ex)
+	catch (exception & ex)
 	{
 		throw ex;
 	}
 	_profile = UserProfile(username);
-	history = Progress(username);
-}
-
-// copy constructor
-User::User(const User& obj)
-{
-	username = obj.username;
-	password = obj.password;
-	membership = obj.membership;
 	history = Progress(username);
 }
 
@@ -52,7 +43,7 @@ void User::readProfile()
 		//get USER NAME
 		getline(file, line);
 		size_t found = line.find("\\");
-		if(found != string::npos)
+		if (found != string::npos)
 		{
 			found += 2;
 			_username = line.substr(found, line.size() - 1);
@@ -60,7 +51,7 @@ void User::readProfile()
 		//get password
 		getline(file, line);
 		found = line.find("\\");
-		if (found!= string::npos)
+		if (found != string::npos)
 		{
 			found += 2;
 			_password = line.substr(found, line.size() - 1);
@@ -77,7 +68,7 @@ void User::readProfile()
 			else if (is_member == "0")
 				_membership = false;
 			else
-				throw invalid_argument("Can't determine member. Value -> " + is_member + "\n");
+				Log("Can't determine member. Value -> " + is_member + "\n");
 			//changes the membership if needed
 			membership = _membership;
 		}
@@ -114,20 +105,15 @@ bool User::createOrder(string purchaseItemID) {
 	//making payment
 	pSess->setOrderID(pSess->CreateOrder(purchaseItemID));
 	if (pSess->getOrderID() != "") {
-		bool success = makePayment();
-		if (success) {
+		if (makePayment()) {
 			setMembership(1);
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-			if (pSess->getOrderID() == "1")
-				cout << "Monthly Subscription Purchased!" << endl;
-			else if (pSess->getOrderID() == "2")
-				cout << "Yearly Subscription Purchased!" << endl;
+			if (pSess->getOrderID() == "Monthly")
+				Log("Monthly Subscription Purchased!");
+			else if (pSess->getOrderID() == "Yearly")
+				Log("Yearly Subscription Purchased!");
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-			cout << "Press 'Enter' to Continue...\n";
-			cin.ignore();
-			if (cin.get() == '\n') {
-				return true;
-			}
+			Sleep(1000);
 		}
 	}
 	return true;
@@ -135,11 +121,11 @@ bool User::createOrder(string purchaseItemID) {
 
 bool User::makePayment()
 {
-	
+
 	pSess->CreatePayment();
 	pSess->SetPaymentInfo();
 	pSess->AuthorizePaymentInfo();
-	cout << "Confirm purchase by pressing 'Enter'. (Payment not yet completed.)\n";
+	cout << "Confirm purchase by pressing 'Enter'. (Payment not yet completed.)";
 	cin.ignore();
 	if (cin.get() == '\n') {
 		pSess->AuthorizePaymentForOrder(pSess->getOrderID());
@@ -153,6 +139,7 @@ bool User::makePayment()
 
 void User::setMembership(bool isMember) {
 	_profile.update_Membership(isMember);
+	Sleep(1000);
 	subscription.membershipActive = 1;
 }
 
@@ -167,82 +154,83 @@ void User::viewProgress()
 		history = Progress(username);
 		history.print_results();
 	}
-	catch (exception& ex)
+	catch (exception & ex)
 	{
 		cerr << ex.what() << endl;
 		cerr << "New Profile?\n" << endl;
 	}
 }
 
- vector<string> User::getOptions() {
- 	vector<string> options;
+vector<string> User::getOptions() {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cout << "Welcome, " << username << "." << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	vector<string> options;
 	options.push_back("1) Request Typing Test");
- 	options.push_back("2) View Personal Progress");
+	options.push_back("2) View Personal Progress");
 	options.push_back("3) Purchase Subscription");
 	options.push_back("4) Change Password");
 	options.push_back("5) Logout");
 	return options;
- }
+}
 
- void User::newProfile(string _username, string _password)
- {
-	 _profile.new_profile(_username, _password);
+void User::newProfile(string _username, string _password)
+{
+	_profile = UserProfile(_username);
+	if(!_profile.new_profile(_username, _password))
+		throw invalid_argument("Error creating the file\n");
+	//SETTING THE USERNAME, PASSWORD, AND INITIALIZING THE HISTORY
+	setUsername(_username);
+	setPassword(_password);
+	history = Progress(username);
+	Sleep(1000);
+	system("CLS");
+}
 
-	 //SETTING THE USERNAME, PASSWORD, AND INITIALIZING THE HISTORY
-	 setUsername(_username);
-	 setPassword(_password);
-	 history = Progress(username);
- }
+bool User::setOrderID(string sub)
+{
+	system("CLS");
 
- bool User::setOrderID(string sub)
- {
-	 system("CLS");
-	 /*char input;
-	 bool loop = true;
-	 do {
-		 cout << "Please select your Payment Program \n 1) Paypal \n 2) Visa \n";
-		 cin >> input;
-		 if (input == '1' || input == '2')
-			 loop = false;
-	 } while (loop);*/
+	if (IS_PAYPAL)
+		pSess = new Paypal();
+	else
+		pSess = new Visa();
+	//setting order id
+	pSess->setOrderID(sub);
+	//capture payment info
+	CapturePaymentInfo();
+	return true;
+}
 
-	 if (IS_PAYPAL)
-		 pSess = new Paypal();
-	 else
-		 pSess = new Visa();
-	 //setting order id
-	 pSess->setOrderID(sub);
-	 //capture payment info
-	 CapturePaymentInfo();
-	 return true;
- }
+void User::CapturePaymentInfo()
+{
+	system("CLS");
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cout << "Please enter Payment Info: " << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	string fname, lname, creditNum, secureCode, expDate;
+	cout << "F Name: ";
+	cin >> fname;
+	cout << "L Name: ";
+	cin >> lname;
+	cout << "CC#: ";
+	cin >> creditNum;
+	cout << "CRV#: ";
+	cin >> secureCode;
+	cout << "Exp Date: ";
+	cin >> expDate;
 
- void User::CapturePaymentInfo()
- {
-	 system("CLS");
-	 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-	 cout << "Please enter Payment Info: " << endl;
-	 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-	 string fname, lname, creditNum, secureCode, expDate;
-	 cout << "F Name: ";
-	 cin >> fname;
-	 cout << "L Name: ";
-	 cin >> lname;
-	 cout << "CC#: ";
-	 cin >> creditNum;
-	 cout << "CRV#: ";
-	 cin >> secureCode;
-	 cout << "Exp Date: ";
-	 cin >> expDate;
+	if (pSess->setCreditInfo(fname, lname, creditNum, secureCode, expDate))
+	{
+		system("CLS");
+		createOrder(pSess->getOrderID());
+	}
+}
 
-	 if (pSess->setCreditInfo(fname, lname, creditNum, secureCode, expDate))
-	 {
-		 system("CLS");
-		 pSess->CreateOrder(pSess->getOrderID());
-		 cin.ignore();
-		 if (cin.get() == '\n')
-			 system("CLS");
-	 }
-
- }
-
+bool User::updateHistory(int avg_WPM, int new_WPM, string sessionID)
+{
+	if (_profile.update_History(avg_WPM, new_WPM, sessionID))
+		return true;
+	else
+		return false;
+}

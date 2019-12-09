@@ -10,55 +10,50 @@ Paypal::~Paypal()
 
 bool Paypal::CreatePayment() {
 
-		return true;
+	return true;
 }
 
 bool Paypal::SetPaymentInfo() {
-		cout << "Payment Info Set by Paypal!" << endl;
-		return true;
+	Log("Payment Info Set by Paypal!\n");
+	return true;
 }
 
 bool Paypal::GetPaymentInfo() {
-	cout << "Payment Details gotten by Paypal!" << endl;
+	Log("Payment Details gotten by Paypal!\n");
 	return true;
 }
 
 bool Paypal::EditPaymentInfo() {
-	cout << "Go to Edit Payment Info by Paypal!" << endl;
+	Log("Go to Edit Payment Info by Paypal!\n");
 	return true;
 }
 
 bool Paypal::AuthorizePaymentInfo() {
-	cout << "Authorized Payment Info by Paypal!" << endl;
+	Log("Authorized Payment Info by Paypal!\n");
 	return true;
 }
 
 string Paypal::CreateOrder(string purchaseItemID) {
-	cout << orderID << " Order Created by Paypal!" << endl;
-	Log(orderID + " Order Created by Paypal! \n");
+	Log(orderID + " Order Created by Paypal!\n");
 	return orderID;
 }
 
 bool Paypal::UpdateOrder(string orderID) {
-	cout << "Updated Order by Paypal!" << endl;
+	Log("Updated Order by Paypal!\n");
 	return true;
 }
 
 bool Paypal::GetOrderInfo(string orderID) {
-	cout << "Order Details gotten by Paypal!" << endl;
+	Log("Order Details gotten by Paypal!\n");
 	return true;
 }
 
 bool Paypal::AuthorizePaymentForOrder(string orderID) {
-	cout << "Payment Authorized for Order by Paypal!" << endl;
+	Log("Payment Authorized for Order by Paypal!\n");
 	return true;
 }
 
 bool Paypal::CapturePaymentForOrder(string orderID) {
-	cout << "Payment Made, Order Submitted by Paypal!" << endl;
+	Log("Payment Made, Order Submitted by Paypal!\n");
 	return true;
-}
-
-void Paypal::LogErr(string msg) {
-	//
 }

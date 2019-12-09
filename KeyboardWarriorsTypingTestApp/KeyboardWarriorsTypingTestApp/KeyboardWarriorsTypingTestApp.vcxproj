@@ -166,13 +166,13 @@
     <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Subscription.hpp" />
     <ClInclude Include="..\..\TechServices\Payment\Visa.hpp" />
-    <ClInclude Include="..\..\TechServices\Persistence\Log.h" />
     <ClInclude Include="..\..\TechServices\Persistence\IPersistence.hpp" />
     <ClInclude Include="..\..\TechServices\Persistence\UserProfile.hpp" />
     <ClInclude Include="..\..\UI\console.hpp" />
     <ClInclude Include="Difficulty.hpp" />
     <ClInclude Include="IPaymentServices.h" />
     <ClInclude Include="ISession.h" />
+    <ClInclude Include="IUser.h" />
     <ClInclude Include="IUserInterface.h" />
   </ItemGroup>
   <ItemGroup>

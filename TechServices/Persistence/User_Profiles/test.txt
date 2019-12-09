@@ -1,0 +1,6 @@
+username\\test
+password\\test
+membership\\1
+WPM\\0
+history
+1\\0

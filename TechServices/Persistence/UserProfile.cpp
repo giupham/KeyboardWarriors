@@ -2,6 +2,7 @@
 
 UserProfile::UserProfile()
 {
+
 }
 
 UserProfile::UserProfile(string username)
@@ -22,6 +23,7 @@ bool UserProfile::new_profile(string username, string password)
 		return false;
 	}
 
+	ofstream write_profile;
 	write_profile.open(profile_path);
 	if (!write_profile.is_open())
 	{
@@ -35,12 +37,13 @@ bool UserProfile::new_profile(string username, string password)
 	write_profile << "history" << endl;
 	write_profile.close();
 
-	cout << "Successfully created new profile for " << username << endl;
+	cout << "Successfully created new profile for " << username << "." << endl;
 	return true;
 }
 
 bool UserProfile::change_password(string password)
 {
+	ifstream read_profile;
 	read_profile.open(profile_path);
 	//CHECK IF YOU CAN OPEN
 	if (!read_profile.is_open())
@@ -62,17 +65,21 @@ bool UserProfile::change_password(string password)
 	}
 	read_profile.close();
 	//WRITE CHANGES INTO PROFILE
+
+	ofstream write_profile;
 	write_profile.open(profile_path);
 	for (auto const& line : lines)
 		write_profile << line << endl;
 	write_profile.close();
 
-	cout << "Successfully changed the password\n";
+	if (cin.get() == '\n')
+		system("CLS");
 	return true;
 }
 
 bool UserProfile::update_Membership(bool membership)
 {
+	ifstream read_profile;
 	read_profile.open(profile_path);
 	//CHECK IF YOU CAN OPEN
 	if (!read_profile.is_open())
@@ -94,23 +101,24 @@ bool UserProfile::update_Membership(bool membership)
 		if (found != string::npos)
 		{
 			string member = (membership) ? "1" : "0";
-			line = "membership\\\\" + membership;
+			line = "membership\\\\" + member;
 		}
 	}
 	read_profile.close();
 
 	//WRITE CHANGES INTO PROFILE
+	ofstream write_profile;
 	write_profile.open(profile_path);
 	for (auto const& line : lines)
 		write_profile << line << endl;
 	write_profile.close();
 
-	cout << "Successfully change membership\n";
 	return true;
 }
 
-bool UserProfile::update_History(int avg_WPM, int new_WPM, int session_ID)
+bool UserProfile::update_History(int avg_WPM, int new_WPM, string session_ID)
 {
+	ifstream read_profile;
 	read_profile.open(profile_path);
 	if (!read_profile.is_open())
 	{
@@ -137,11 +145,12 @@ bool UserProfile::update_History(int avg_WPM, int new_WPM, int session_ID)
 	lines.push_back(new_session);
 
 	//PUTTING CHANGES BACK INTO THE PROFILE TXT
+	ofstream write_profile;
 	write_profile.open(profile_path);
 	for (auto const& line : lines)
 		write_profile << line << endl;
 	write_profile.close();
 
-	cout << "Successfully updated the History\n";
+	system("CLS");
 	return true;
 }

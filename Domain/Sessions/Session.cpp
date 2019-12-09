@@ -7,10 +7,6 @@ Session::Session()
 	date = "";
 	SessionID = "";
 	TypingTest = NULL;
-	/*
-	TypingTest.setPath("../../TypingTests/CSS.txt");
-	TypingTest.reformatFileContentForWindowsChars(TypingTest.getPath());
-	*/
 }
 
 Session::~Session()
@@ -36,5 +32,9 @@ Result Session::getTestResults()
 
 
 void Session::updateProgress(Progress &newProgress, Result res) {
-	newProgress.updateResults(to_string(newProgress.get_sess_num() + 1), res);
+	int avg_WPM = 0;
+	int new_WPM = 0;
+	newProgress.updateResults(to_string(newProgress.get_sess_num() + 1), res, avg_WPM, new_WPM);
+
+	SessionUser.updateHistory(avg_WPM, new_WPM, to_string(newProgress.get_sess_num()));
 }

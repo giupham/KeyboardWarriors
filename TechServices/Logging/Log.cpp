@@ -2,7 +2,7 @@
 using namespace std;
 
 Log::Log() {
-	
+
 }
 
 Log::Log(string msg) {

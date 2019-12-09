@@ -69,6 +69,9 @@
     <ClInclude Include="ISession.h">
       <Filter>Header Files\Domain\Session</Filter>
     </ClInclude>
+    <ClInclude Include="IUser.h">
+      <Filter>Header Files\Domain\User</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Domain\Test\FreeTest.hpp">
       <Filter>Header Files\Domain\Test</Filter>
     </ClInclude>
@@ -81,13 +84,10 @@
     <ClInclude Include="..\..\TechServices\Payment\Paypal.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\TechServices\Logging\Log.hpp">
-      <Filter>Header Files\Technical</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\TechServices\Logging\ILog.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\TechServices\Persistence\Log.h">
+    <ClInclude Include="..\..\TechServices\Logging\Log.hpp">
       <Filter>Header Files\Technical</Filter>
     </ClInclude>
     <ClInclude Include="..\..\TechServices\Persistence\IPersistence.hpp">

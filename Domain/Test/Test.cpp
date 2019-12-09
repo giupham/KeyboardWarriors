@@ -1,4 +1,4 @@
-#include "Test.hpp"
+﻿#include "Test.hpp"
 #include <sstream>
 
 using namespace std;
@@ -30,7 +30,6 @@ void Test::fillTestTypes()
 	easy.push_back("Anthem1.txt");
 	easy.push_back("GrimmsBlueLight1.txt");
 	easy.push_back("GrimmsBlueLight4.txt");
-	easy.push_back("YellowWallpaper1.txt");
 
 	medium.push_back("Alice2.txt");
 	medium.push_back("Alice5.txt");
@@ -44,14 +43,7 @@ void Test::fillTestTypes()
 	hard.push_back("Anthem3.txt");
 	hard.push_back("GrimmsBlueLight3.txt");
 	hard.push_back("GrimmsBlueLight6.txt");
-	hard.push_back("YelllowWallpaper3.txt");
-
-	for (int i = 1; i <= 3; i++)
-	{
-		css.push_back("CSS" + to_string(i) + ".txt");
-		python.push_back("PY" + to_string(i) + ".txt");
-		cpp.push_back("CPP" + to_string(i) + ".txt");
-	}
+	hard.push_back("YellowWallpaper3.txt");
 
 	test_types["easy"] = easy;
 	test_types["medium"] = medium;
@@ -187,9 +179,12 @@ bool Test::calculateWPM(string path, double duration, string inputContent) {
 
 void Test::viewResults(Result r) {
 	system("CLS");
-	cout << "Your WPM: " << r.getWPM() << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cout << "Your WPM: ";
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15); 
+	cout << r.getWPM() << endl;
 	cout << endl;
-	Sleep(4000);
+	Sleep(1250);
 	system("CLS");
 }
 
@@ -208,16 +203,16 @@ int Test::getTestWordCount(string path) {
 	return count;
 }
 
-void Test::reformatFileContentForWindowsChars(string path) {
-	ifstream readFrom(path);
-	ofstream writeTo("../../TypingTests/example.txt");
+void Test::reformatFileContentForWindowsChars(string filename) {
+	ifstream readFrom("../../TechServices/Persistence/TypingTests/" + filename);
+	ofstream writeTo("../../TechServices/Persistence/TypingTests/NEW" + filename);
 	string currLine = "";
 	string content = "";
 	if (readFrom.is_open()) {
 		while (getline(readFrom, currLine)) {
-			content += currLine + '\n';
+			content = currLine + '\n';
+			writeTo << content;
 		}
-		writeTo << content;
 	}
 	readFrom.close();
 	writeTo.close();

@@ -12,4 +12,3 @@ public:
 	Log(string msg);
 	string current_time();
 };
-

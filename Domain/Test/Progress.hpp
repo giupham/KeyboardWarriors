@@ -24,8 +24,7 @@ class Progress
 	  Result locateResult(string);
 	  float getAverageWPM();
 	  int get_sess_num();
-	  void updateResults(string, Result);
-	  void updateUserProfile(string);
+	  void updateResults(string, Result, int&, int&);
 	  void print_results();
 
 };
